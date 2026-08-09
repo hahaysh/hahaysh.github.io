@@ -140,7 +140,7 @@ export const certifications = [
   { title: "Microsoft Certified: Azure AI Fundamentals", status: "active", badgeUrl: "/images/badges/Azure AI Fundamentals.png", badge: "🧠" },
   { title: "Microsoft Certified: Azure Fundamentals", status: "active", badgeUrl: "/images/badges/Azure Fundamentals.png", badge: "☁️" },
   { title: "GitHub Copilot Certification", status: "active", badgeUrl: "/images/badges/GitHub Copilot.png", badge: "🤖" },
-  { title: "Microsoft Certified Trainer (MCT)", status: "active", badgeUrl: "/images/badges/MCT.png", note: "2023-2025", badge: "👨‍🏫" },
+  { title: "Microsoft Certified Trainer (MCT)", status: "active", badgeUrl: "/images/badges/MCT.png", note: "2023-2026", badge: "👨‍🏫" },
   { title: "Microsoft Certified: Azure Solutions Architect Expert (Legacy)", status: "legacy" },
 ];
 
