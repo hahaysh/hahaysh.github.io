@@ -3,9 +3,8 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import * as dataKo from '../../lib/data.ko';
+import { expertise as expertiseConfig } from '../../lib/data';
 
-const expertiseConfig = dataKo.expertise;
 const expertiseCollection = await getCollection('expertise');
 ---
 

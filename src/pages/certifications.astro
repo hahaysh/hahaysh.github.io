@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { certifications, otherCertifications, awards } from '../lib/data';
+import { certifications, otherCertifications, awards } from '../lib/data.en';
 
 const activeCerts = certifications.filter((c) => c.status === 'active');
 const legacyCerts = certifications.filter((c) => c.status === 'legacy');

@@ -2,9 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import * as dataKo from '../../lib/data.ko';
-
-const { trainingTracks, trainingClients, communityActivities, trainingByYear } = dataKo;
+import { trainingTracks, trainingClients, communityActivities, trainingByYear } from '../../lib/data';
 ---
 
 <BaseLayout title="Microsoft 교육 - 유성호" description="2019년부터 Azure, AI, GitHub, Copilot 교육을 제공하는 Microsoft 인증 교육자">

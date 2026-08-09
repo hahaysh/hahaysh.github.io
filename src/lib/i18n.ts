@@ -1,11 +1,11 @@
 /**
  * i18n.ts - Internationalization utilities
- * Supports: English (en), Korean (ko)
+ * Supports: Korean (ko) - PRIMARY, English (en) - SECONDARY
  * 
  * Rules:
- * 1. English is the primary language (default)
- * 2. When updating content, modify English version first
- * 3. Korean version syncs with English version
+ * 1. Korean is the primary language (default content language)
+ * 2. When updating content, modify Korean version first (data.ts)
+ * 3. English version syncs with Korean version (data.en.ts)
  * 4. Each language has its own data module
  */
 

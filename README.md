@@ -209,14 +209,14 @@ git diff HEAD~1
 
 ## � Multilingual Support (다국어 지원)
 
-This portfolio supports **English (primary) and Korean (secondary)** with proper language-based routing and content management.
+This portfolio supports **Korean (primary) and English (secondary)** with proper language-based routing and content management.
 
 ### Language Architecture
 
-- **Default Language**: English (`/` or `/en/*` routes)
-- **Secondary Language**: Korean (`/ko/*` routes)
-- **Routing**: Path-based language detection
-- **Content Structure**: Parallel data files (`data.ts` for English, `data.ko.ts` for Korean)
+- **Primary Language**: Korean (default content language)
+- **Secondary Language**: English (synced from Korean)
+- **Routing**: Path-based language detection (`/` for Korean, `/ko/` for mirrored Korean, `/` for English)
+- **Content Structure**: Primary data files (`data.ts` for Korean, `data.en.ts` for English)
 
 ### File Structure
 
@@ -224,8 +224,8 @@ This portfolio supports **English (primary) and Korean (secondary)** with proper
 src/
 ├── lib/
 │   ├── i18n.ts           # ⭐ Multilingual utilities (routing, translations)
-│   ├── data.ts           # 🇬🇧 English content (PRIMARY)
-│   └── data.ko.ts        # 🇰🇷 Korean content (SECONDARY)
+│   ├── data.ts           # �🇷 Korean content (PRIMARY)
+│   └── data.en.ts        # 🇬🇧 English content (SECONDARY)
 ├── pages/
 │   ├── index.astro       # English: /
 │   ├── about.astro       # English: /about
@@ -240,15 +240,15 @@ src/
 
 ### Multilingual Workflow Rules
 
-**🔴 RULE 1: Always update English version first**
-- Edit content in `src/lib/data.ts` (English source)
+**🔴 RULE 1: Always update Korean version first**
+- Edit content in `src/lib/data.ts` (Korean source - PRIMARY)
 - Make all structural or data changes here
-- English is the single source of truth
+- Korean is the single source of truth
 
-**🟢 RULE 2: Korean version syncs afterward**
-- Update corresponding translations in `src/lib/data.ko.ts`
-- Key structure must remain identical to English
-- Follow Korean-specific naming/terminology conventions
+**🟢 RULE 2: English version syncs afterward**
+- Update corresponding translations in `src/lib/data.en.ts`
+- Key structure must remain identical to Korean
+- Follow English-specific naming/terminology conventions
 
 **🟡 RULE 3: Keep data structure synchronized**
 - Both files must export identical keys and object structures
@@ -257,19 +257,7 @@ src/
 
 **Example: Adding a new certification**
 
-1. **Update English (data.ts) FIRST:**
-   ```typescript
-   export const certifications = [
-     // ... existing certs ...
-     {
-       title: "Microsoft Certified: New Cert 2026",
-       status: "active",
-       badgeUrl: "/images/badges/new-cert-2026.png",
-     }
-   ];
-   ```
-
-2. **Then sync to Korean (data.ko.ts):**
+1. **Update Korean (data.ts) FIRST:**
    ```typescript
    export const certifications = [
      // ... existing certs ...
@@ -281,9 +269,21 @@ src/
    ];
    ```
 
+2. **Then sync to English (data.en.ts):**
+   ```typescript
+   export const certifications = [
+     // ... existing certs ...
+     {
+       title: "Microsoft Certified: New Cert 2026",
+       status: "active",
+       badgeUrl: "/images/badges/new-cert-2026.png",
+     }
+   ];
+   ```
+
 3. **The certification automatically appears in:**
-   - `/certifications` (English)
    - `/ko/certifications` (Korean)
+   - `/certifications` (English)
 
 ### Language Switcher
 

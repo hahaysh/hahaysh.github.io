@@ -1,17 +1,17 @@
 /**
- * data.ko.ts - Korean (한국어) Content
+ * data.en.ts - English Content (SECONDARY Language)
  * 
  * Rules for Multilingual Management:
- * 1. English version (data.ts) is the primary source
- * 2. Always update English version first
- * 3. Korean version syncs with English version
+ * 1. Korean version (data.ts) is the primary source
+ * 2. Always update Korean version first
+ * 3. English version syncs with Korean version
  * 4. Keep keys identical between languages
  */
 
 export const siteConfig = {
-  name: "유성호",
-  title: "유성호 - Microsoft 인증 교육자 & 클라우드/DevOps 전문가",
-  description: "20년 이상의 경험을 가진 클라우드 아키텍트이자 마이크로소프트 인증 교육자. Azure, AI, DevOps 분야의 엔터프라이즈 솔루션 전문가. 15년 Microsoft MVP 경력 보유.",
+  name: "SungHo You",
+  title: "SungHo You - Microsoft Certified Trainer & Cloud/DevOps Specialist",
+  description: "Cloud architect and Microsoft Certified Trainer helping enterprise teams master Azure, AI, and DevOps. 20+ years building enterprise systems. Former 15-year Microsoft MVP.",
   url: "https://hahaysh.github.io",
   email: "hahaysh@hotmail.com",
   social: {
@@ -21,25 +21,29 @@ export const siteConfig = {
 };
 
 export const bio = {
-  short: "Microsoft 인증 교육자 | Azure, AI & DevOps 전문가 | 20년 이상 엔터프라이즈 시스템 개발",
-  long: `나는 Microsoft 인증 교육자이자 클라우드 아키텍트로서 확장성 있는 시스템을 구축하고 팀들이 클라우드 기술을 습득하도록 도와주는 것에 열정을 가지고 있습니다.
+  short: "Microsoft Certified Trainer | Azure, AI & DevOps Specialist | 20+ Years Building Enterprise Systems",
+  long: `I'm a Microsoft Certified Trainer and cloud architect with a passion for building scalable systems and helping teams master cloud technologies. 
 
-지난 20년 이상 나는 운 좋게도 스타트업부터 포춘 500대 기업까지 다양한 조직과 함께 일해왔으며, 금융, 유통, 자동차, 미디어 등의 복잡한 문제를 해결해왔습니다. 나는 초기 .NET 시대의 소프트웨어 엔지니어로 시작했고, 이후 엔터프라이즈 아키텍처로 진화했으며, 기업들의 인프라 현대화와 클라우드 우선 전략 도입을 주도하는 변환 프로젝트를 이끌었습니다.
+For the past 20+ years, I've been fortunate to work with some incredible organizations—from startups to Fortune 500 companies—solving complex problems in finance, retail, automotive, and media. I started my journey as a software engineer during the early .NET days, then evolved into enterprise architecture, leading transformation projects that helped companies modernize their infrastructure and embrace cloud-first thinking.
 
-내 경력의 하이라이트는 15년 연속 Microsoft C# MVP로 인정받은 것입니다 (2005-2019). 이는 단순히 코딩에 대한 것이 아니라 커뮤니티 구축과 지식 공유에 대한 인정이었습니다. 2019년 Microsoft 인증 교육자로 합류한 이후, 나는 나의 진정한 소명을 찾았습니다: 엔터프라이즈 팀들이 Azure, AI, 현대적 개발 관행의 잠재력을 발휘하도록 돕는 것입니다.
+The highlight of my career was being recognized as a Microsoft C# MVP for 15 consecutive years (2005-2019). That recognition wasn't just about coding—it was about building communities and sharing knowledge. Since joining Microsoft as a Certified Trainer in 2019, I've found my true calling: helping enterprise teams unlock the potential of Azure, AI, and modern development practices.
 
-나를 움직이는 것은 무엇인가요? 팀들이 자신감 있게 클라우드 기술을 채택하는 것을 보는 것, DevOps 변환이 실제로 조직의 소프트웨어 배포 방식을 개선하는 것을 보는 것, 그리고 복잡한 개념이 명확해지는 "아하!" 순간들입니다. 나는 엔터프라이즈 팀들에게 270회 이상의 교육 세션을 진행했고, 각각의 세션은 왜 나가 이 일을 사랑하는지를 다시 한 번 확인해줍니다.
+What drives me? Seeing teams confidently adopt cloud technologies, watching DevOps transformations actually improve how organizations ship software, and witnessing the "aha!" moments when complex concepts click. I've delivered over 270 training sessions to enterprise teams, and each one reinforces why I love this work.
 
-교육을 넘어, 나는 AI와 지능형 에이전트에 깊은 관심이 있습니다—이것이 우리가 소프트웨어를 만드는 방식의 미래입니다. 나는 또한 아버지이자 평생 학습자이며, 위대한 기술은 문화와 시간대를 초월한 훌륭한 협업에서 나온다고 믿는 사람입니다.`,
+Beyond training, I'm deeply interested in AI and intelligent agents—the future of how we'll build software. I'm also a father, a lifelong learner, and someone who believes that great technology comes from great collaboration across cultures and time zones.`,
 };
 
 export const stats = [
-  { label: "IT 경험", value: "20년 이상" },
+  { label: "Years of IT Experience", value: "20+" },
   { label: "Microsoft C# MVP", value: "2005-2019" },
-  { label: "진행한 교육 세션", value: "270회 이상" },
-  { label: "교육받은 팀", value: "글로벌" },
+  { label: "Training Sessions Delivered", value: "270+" },
+  { label: "Teams Trained", value: "Global" },
 ];
 
+// Training sessions delivered per year as a Microsoft Certified Trainer. 2020-2024 counts are
+// from a user-provided job application record. The 2025 figure was a mid-year snapshot from
+// that same record and likely undercounts the full year. The 2026 count is estimated from
+// Activity folder delivery records (through August 2026), pending a final tally.
 export const trainingByYear = [
   { year: 2020, sessions: 35, courses: ["AZ-104", "AZ-204", "AZ-400", "AZ-900", "AZ-303"] },
   { year: 2021, sessions: 40, courses: ["AZ-104", "AZ-204", "AZ-304", "AZ-400", "AZ-500"] },
@@ -47,86 +51,91 @@ export const trainingByYear = [
   { year: 2023, sessions: 45, courses: ["AZ-104", "AZ-204", "AZ-400", "AZ-500", "AZ-700", "AZ-1001"] },
   { year: 2024, sessions: 40, courses: ["AZ-104", "AZ-204", "AZ-400", "AZ-500", "AZ-700", "AZ-1001", "AI-102"] },
   { year: 2025, sessions: 41, courses: ["AZ-104", "AI-102", "AZ-2007", "AZ-400", "AZ-700", "AZ-204", "AI-3016", "MS-4023", "MS-4014", "AZ-2003", "GH-900", "GH-300", "AI-3026"] },
-  { year: 2026, sessions: 29, courses: ["AZ-104", "AZ-400", "AI-102", "AI-103", "AI-3016", "AI-3026", "GH-300", "GH-900", "MS-4018", "MS-4019"], inProgress: true, note: "2026년 8월까지의 Activity 폴더 기록 기반 추정" },
+  { year: 2026, sessions: 29, courses: ["AZ-104", "AZ-400", "AI-102", "AI-103", "AI-3016", "AI-3026", "GH-300", "GH-900", "MS-4018", "MS-4019"], inProgress: true, note: "estimated from Activity folder records through August 2026" },
 ];
 
 export const expertise = [
   {
     id: "cloud-architecture",
-    title: "클라우드 아키텍처",
-    description: "엔터프라이즈 워크로드에 대한 확장성 있고 안전한 Azure 클라우드 솔루션 설계.",
+    title: "Cloud Architecture",
+    description: "Design scalable, secure Azure cloud solutions with best practices for enterprise workloads.",
     icon: "☁️",
   },
   {
     id: "devops",
     title: "DevOps & CI/CD",
-    description: "자동화 파이프라인, Infrastructure-as-Code, 지속적 배포 전략 구현.",
+    description: "Implement automation pipelines, infrastructure-as-code, and continuous deployment strategies.",
     icon: "🔄",
   },
   {
     id: "ai-agents",
-    title: "AI 에이전트 & LLM",
-    description: "최신 AI 모델 및 프레임워크를 사용한 지능형 에이전트 구축.",
+    title: "AI Agents & LLMs",
+    description: "Build intelligent agents using latest AI models and frameworks for business automation.",
     icon: "🤖",
   },
   {
     id: "technical-training",
-    title: "기술 교육",
-    description: "클라우드 및 AI 기술에 대한 엔터프라이즈 팀을 위한 포괄적인 교육 프로그램 제공.",
+    title: "Technical Training",
+    description: "Deliver comprehensive training programs for enterprise teams on cloud and AI technologies.",
     icon: "📚",
   },
 ];
 
+// MCT training tracks delivered since joining Microsoft (Nov 2019). Session counts are
+// estimated from delivery folder records, pending reconciliation against official records.
 export const trainingTracks = [
   {
     id: "azure-administration",
-    title: "Azure 관리 & 기초",
+    title: "Azure Administration & Fundamentals",
     icon: "🛠️",
     examCodes: ["AZ-900", "AZ-103", "AZ-104"],
-    description: "핵심 Azure 인프라 관리: ID, 스토리지, 네트워킹, 컴퓨팅 관리.",
+    description: "Core Azure infrastructure administration: identity, storage, networking, and compute management.",
   },
   {
     id: "azure-development",
-    title: "Azure 개발",
+    title: "Azure Development",
     icon: "💻",
     examCodes: ["AZ-204"],
-    description: "Azure에서 클라우드 애플리케이션 및 서비스 구축 및 배포.",
+    description: "Building and deploying cloud applications and services on Azure.",
   },
   {
     id: "devops-security-networking",
-    title: "DevOps, 보안 & 네트워킹",
+    title: "DevOps, Security & Networking",
     icon: "🔐",
     examCodes: ["AZ-400", "AZ-500", "AZ-700", "AZ-303", "AZ-304", "SC-300"],
-    description: "Azure에서의 CI/CD 파이프라인, 보안 엔지니어링, 네트워크 아키텍처.",
+    description: "CI/CD pipelines, security engineering, and network architecture on Azure.",
   },
   {
     id: "ai-engineering",
-    title: "AI 엔지니어링",
+    title: "AI Engineering",
     icon: "🤖",
     examCodes: ["AI-102", "AI-050", "AI-103", "AI-3002", "AI-3003", "AI-3004", "AI-3016", "AI-3026"],
-    description: "생성형 AI 및 에이전트 개발을 포함한 Azure AI 솔루션 설계 및 구축.",
+    description: "Designing and building AI solutions on Azure, including generative AI and agent development.",
   },
   {
     id: "github-copilot",
     title: "GitHub & Microsoft 365 Copilot",
     icon: "🐙",
     examCodes: ["GH-100", "GH-300", "GH-900", "MS-4014", "MS-4018", "MS-4019", "MS-4023"],
-    description: "GitHub 기초, Copilot 기반 개발, Microsoft 365 Copilot 도입 교육.",
+    description: "GitHub foundations, Copilot-assisted development, and Microsoft 365 Copilot adoption training.",
   },
 ];
 
+// Enterprise clients trained as a Microsoft Certified Trainer (2019–present).
 export const trainingClients = [
   "Samsung", "LG", "LG Innotek", "Hyundai", "KT", "SK", "KRAFTON", "Wemade", "LS Electric", "HP",
 ];
 
 export const communityActivities = [
-  { title: "Korea MCT Summit", description: "Microsoft 인증 교육자 커뮤니티 연례 행사 참석자." },
-  { title: "MCT Lounge Blog", description: "Microsoft 인증 교육자 커뮤니티를 위한 기술 문서 기고자." },
-  { title: "Microsoft AI Tour", description: "Microsoft AI Tour 커뮤니티 이벤트 지원 참석자." },
-  { title: "해커톤", description: "해커그라운드 및 DDD Seoul 등 커뮤니티 해커톤 참가자." },
-  { title: "Hour of AI", description: "커뮤니티 AI 문해력 교육 이벤트 자원봉사자." },
+  { title: "Korea MCT Summit", description: "Annual participant, Microsoft Certified Trainer community event in Korea." },
+  { title: "MCT Lounge Blog", description: "Contributor of technical articles for the Microsoft Certified Trainer community." },
+  { title: "Microsoft AI Tour", description: "Participant supporting Microsoft's AI Tour community events." },
+  { title: "Hackathons", description: "Participant in community hackathons including 해커그라운드 and DDD Seoul." },
+  { title: "Hour of AI", description: "Volunteer supporting community AI literacy events." },
 ];
 
+// Active Microsoft certifications, per Microsoft Learn profile (14 items, screenshot-verified).
+// Note: badgeUrl points to locally cached SVG files from Microsoft Learn
 export const certifications = [
   { title: "Microsoft Certified: Azure Solutions Architect Expert", status: "active", badgeUrl: "/images/badges/Azure Solutions Architect.png", badge: "🏗️" },
   { title: "Microsoft Certified: DevOps Engineer Expert", status: "active", badgeUrl: "/images/badges/DevOps Engineer.png", badge: "⚙️" },
@@ -143,16 +152,18 @@ export const certifications = [
   { title: "Microsoft Certified: Azure Solutions Architect Expert (Legacy)", status: "legacy" },
 ];
 
+// Other (non-Microsoft-exam) professional certifications held.
 export const otherCertifications = [
   { title: "OCP (Oracle Certified Professional)" },
   { title: "MCP (Microsoft Certified Professional)" },
   { title: "MCSE (Microsoft Certified Systems Engineer)" },
   { title: "MCDBA (Microsoft Certified Database Administrator)" },
-  { title: "정보처리기사 (정보기술 엔지니어, 한국)", note: "1998" },
+  { title: "정보처리기사 (Engineer Information Processing, Korea)", note: "1998" },
 ];
 
+// Awards, recognition from the pre-Microsoft career.
 export const awards = [
-  { title: "Microsoft C# MVP", period: "2005-2019 (15년 연속)" },
+  { title: "Microsoft C# MVP", period: "2005-2019 (15 consecutive years)" },
   { title: "제9회 전자·IT의 날 산업통상자원부장관상", period: "2014" },
   { title: "한국전자정보통신산업진흥회 전자IoT협업센터 기술전문위원(C-구루)", period: "2016-2019" },
   { title: "한국전자정보통신산업진흥회 국가인적자원개발컨소시엄 운영위원", period: "2016-2019" },
@@ -168,6 +179,7 @@ export const publications = [
   { title: "ZDNet Korea 기고 - Visual Studio Team System 2008 TIP", year: 2009, publisher: "ZDNet Korea" },
 ];
 
+// Startup experience and leadership background
 export const startupExperience = [
   {
     id: "developience",
@@ -232,18 +244,27 @@ export const startupExperience = [
         impact: "롯데 그룹사 50개 이상 계열사 정보시스템 통합",
       },
       {
+        title: "롯데 기공 통합 정보시스템",
+        description: "롯데건설 및 기공계열 통합 ERP 시스템.",
+      },
+      {
         title: "삼성전자 국내 영업 B2B 전용 영업시스템",
-        description: "삼성전자 B2B 채널 전용 영업 포털 및 주문 관리 시스템.",
+        description: "삼성전자 B2B 채널 전용 영업 포털 및 주문 관리 시스템. 전국 수백 개 거래처의 온라인 거래 활성화.",
       },
       {
         title: "연합뉴스 사진판매 시스템 (HelloPhoto)",
         description: "연합뉴스의 뉘스 사진 라이센싱 및 판매 플랫폼.",
+      },
+      {
+        title: "현대 케피코 품질관리 시스템",
+        description: "현대자동차 계열사 품질관리 및 이력 추적 시스템.",
       },
     ],
     achievements: [
       "롯데, 삼성, 현대, 연합뉴스 등 대형 기업의 핵심 정보시스템 개발",
       "100만+ 일일 사용자를 지원하는 대규모 시스템 운영",
       ".NET 플랫폼에서 고성능 엔터프라이즈 시스템 설계 및 개발",
+      "금융, 유통, 항공, 언론 등 다양한 업종의 기술 혁신 주도",
     ],
   },
   {
@@ -257,10 +278,15 @@ export const startupExperience = [
         title: "연합뉴스 인터넷 서비스 고도화",
         description: "연합뉴스의 웹 서비스 품질 개선 및 기술 현대화.",
       },
+      {
+        title: "현대/기아 그룹웨어",
+        description: "현대자동차 및 기아자동차의 통합 그룹웨어 시스템.",
+      },
     ],
   },
 ];
 
+// Key products and services developed during startup years
 export const startupProducts = [
   {
     name: "WatchDoing",
