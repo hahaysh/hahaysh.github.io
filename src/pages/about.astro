@@ -13,26 +13,16 @@ import { siteConfig, bio, stats, certifications, awards, publications, startupEx
         <h1>About Me</h1>
         <div class="about-content">
           <div class="about-text">
-            <h2>Professional Journey</h2>
-            <p>{bio.long}</p>
+            <p class="intro-bio">{bio.long}</p>
 
-            <h2>Career Timeline</h2>
+            <h2>What I'm Passionate About</h2>
             <ul class="focus-areas">
-              <li><strong>2004–2009 (Early Career):</strong> Software engineer and CTO at XDNSoft, designing large-scale enterprise systems (.NET platform) for Fortune 500 companies including Samsung, Lotte Group, Hyundai Heavy Industries, and news organizations. Delivered systems serving 1M+ daily users across finance, retail, automotive, and media sectors.</li>
-              <li><strong>2005–2019 (15-Year MVP Era):</strong> Recognized as Microsoft C# MVP for 15 consecutive years, establishing thought leadership in cloud and enterprise architecture while consulting for transformational digital projects across global enterprises.</li>
-              <li><strong>2009–2019 (DevOps & Cloud Leadership):</strong> Served as CTO at Developience, leading enterprise DevOps transformation initiatives for Samsung (S1 organization), OB Beer, Mizuho Bank (Japan), Hyundai Heavy Industries, and other global enterprises. Designed Azure-based CI/CD pipelines that reduced deployment cycles by 60%, pioneered remote infrastructure monitoring solutions (patent-filed), and drove cloud adoption across diverse industries.</li>
-              <li><strong>November 2019 (Microsoft Transition):</strong> Joined Microsoft as a Microsoft Certified Trainer (MCT), transitioning 15+ years of enterprise technical expertise into official technical education delivery.</li>
-              <li><strong>2020–Present (Technical Training & Thought Leadership):</strong> Delivered 272+ enterprise training sessions on Azure, AI, DevOps, and GitHub technologies. Specialized expertise in Azure Administration (AZ-104), Development (AZ-204), DevOps Engineering (AZ-400), Security (AZ-500), Solutions Architecture (AZ-305), Networking (AZ-700), AI Engineering (AI-102, AI-103), and GitHub Copilot adoption. See <a href="/training">Training</a> and <a href="/portfolio">Portfolio</a> for details.</li>
-            </ul>
-
-            <h2>Core Expertise & Focus Areas</h2>
-            <ul class="focus-areas">
-              <li><strong>Azure Cloud Platform:</strong> Deep expertise in Azure administration, development, security, networking, and infrastructure-as-code (Bicep, ARM templates, Terraform). Designed and deployed enterprise cloud solutions across regions with focus on high availability, security, and cost optimization.</li>
-              <li><strong>DevOps & Cloud Transformation:</strong> 15+ years designing CI/CD pipelines, infrastructure automation, and cloud migrations for enterprise organizations. Hands-on experience with Azure DevOps, GitHub Actions, and modern deployment strategies.</li>
-              <li><strong>AI & Intelligent Agents:</strong> Expertise in Azure AI services, generative AI model integration, and agent-based solution design. Training enterprise teams on Azure AI Engineer curriculum, LLM applications, and Microsoft Agent Framework.</li>
-              <li><strong>Enterprise Technical Training:</strong> Certified trainer delivering official Microsoft curriculum to enterprise teams. Specializing in adult learning principles, hands-on lab design, and practical skill transfer across diverse technical audiences.</li>
-              <li><strong>GitHub & Microsoft 365 Copilot:</strong> Training teams on GitHub enterprise adoption, GitHub Copilot for developers, and Microsoft 365 Copilot for business productivity.</li>
-              <li><strong>Enterprise Architecture:</strong> 20+ years designing scalable, secure systems for financial, retail, automotive, and media organizations. Experience with large-scale system performance optimization, security hardening, and cross-functional stakeholder alignment.</li>
+              <li><strong>Azure Cloud Platform:</strong> From infrastructure to serverless solutions, I love designing systems that scale.</li>
+              <li><strong>DevOps & Transformation:</strong> Helping organizations move faster and ship better software through modern practices.</li>
+              <li><strong>AI & Intelligent Agents:</strong> Exploring how AI will reshape the way we build software and solve problems.</li>
+              <li><strong>Teaching & Mentoring:</strong> There's nothing better than that moment when something clicks for someone you're training.</li>
+              <li><strong>Enterprise Architecture:</strong> Building reliable systems that serve millions of users across global markets.</li>
+              <li><strong>GitHub & Developer Tools:</strong> Making developers' lives easier with modern tooling and practices.</li>
             </ul>
 
             <h2>By The Numbers</h2>
@@ -197,6 +187,19 @@ import { siteConfig, bio, stats, certifications, awards, publications, startupEx
     line-height: 1.8;
     margin-bottom: 1.5rem;
     white-space: pre-wrap;
+  }
+
+  .intro-bio {
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .intro-bio {
+      color: #e2e8f0;
+    }
   }
 
   @media (prefers-color-scheme: dark) {

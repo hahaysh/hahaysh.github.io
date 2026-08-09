@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "SungHo You",
-  title: "SungHo You - Microsoft Certified Trainer & Cloud/DevOps Consultant",
-  description: "Microsoft Certified Trainer delivering Azure and AI training; former cloud/DevOps consultant; 15-year Microsoft C# MVP (2005-2019).",
+  title: "SungHo You - Microsoft Certified Trainer & Cloud/DevOps Specialist",
+  description: "Cloud architect and Microsoft Certified Trainer helping enterprise teams master Azure, AI, and DevOps. 20+ years building enterprise systems. Former 15-year Microsoft MVP.",
   url: "https://hahaysh.github.io",
   email: "hahaysh@hotmail.com",
   social: {
@@ -11,25 +11,23 @@ export const siteConfig = {
 };
 
 export const bio = {
-  short: "Microsoft Certified Trainer | Former Cloud/DevOps Consultant | 15-Year Microsoft MVP (2005-2019)",
-  long: `I am a Microsoft Certified Trainer and cloud architect with 20+ years of enterprise IT experience across software development, enterprise systems, DevOps transformation, and technical education.
+  short: "Microsoft Certified Trainer | Azure, AI & DevOps Specialist | 20+ Years Building Enterprise Systems",
+  long: `I'm a Microsoft Certified Trainer and cloud architect with a passion for building scalable systems and helping teams master cloud technologies. 
 
-**Career Foundation (2004-2009):** Started as a software engineer during the .NET platform emergence, leading enterprise systems architecture for Fortune 500 companies including Samsung, Lotte Group, Hyundai Heavy Industries, and news organizations. Designed and delivered large-scale systems serving 1M+ daily users across finance, retail, automotive, and media sectors.
+For the past 20+ years, I've been fortunate to work with some incredible organizations—from startups to Fortune 500 companies—solving complex problems in finance, retail, automotive, and media. I started my journey as a software engineer during the early .NET days, then evolved into enterprise architecture, leading transformation projects that helped companies modernize their infrastructure and embrace cloud-first thinking.
 
-**Technical Leadership & MVP Recognition (2005-2019):** Earned 15 consecutive years as a Microsoft C# MVP while building enterprise cloud and DevOps consulting practices. Delivered transformational projects including Samsung's large-scale CI/CD pipeline modernization, mobile commerce platforms for Lotte Cinema, and IoT-based home automation solutions.
+The highlight of my career was being recognized as a Microsoft C# MVP for 15 consecutive years (2005-2019). That recognition wasn't just about coding—it was about building communities and sharing knowledge. Since joining Microsoft as a Certified Trainer in 2019, I've found my true calling: helping enterprise teams unlock the potential of Azure, AI, and modern development practices.
 
-**Cloud & DevOps Consulting Era:** As CTO of Developience, led enterprise DevOps transformation for global financial and manufacturing organizations, designing Azure-based CI/CD pipelines that accelerated deployment cycles by 60%, while pioneering remote infrastructure monitoring solutions.
+What drives me? Seeing teams confidently adopt cloud technologies, watching DevOps transformations actually improve how organizations ship software, and witnessing the "aha!" moments when complex concepts click. I've delivered over 270 training sessions to enterprise teams, and each one reinforces why I love this work.
 
-**Current Focus - Technical Training (2019-Present):** Joined Microsoft as MCT in November 2019. Transitioned expertise into enterprise technical education, delivering official Microsoft curriculum on Azure, AI, DevOps, and GitHub technologies. Delivered 272+ training sessions to enterprise teams through August 2026, specializing in Azure Administration, Development, DevOps Engineering, AI Engineering, and Microsoft 365 Copilot adoption.
-
-**Key Strengths:** Enterprise cloud architecture · DevOps & CI/CD pipeline design · .NET and modern cloud platform expertise · AI and agent-based solution design · Technical training delivery · Cross-cultural enterprise consulting (US, EU, Japan, Korea).`,
+Beyond training, I'm deeply interested in AI and intelligent agents—the future of how we'll build software. I'm also a father, a lifelong learner, and someone who believes that great technology comes from great collaboration across cultures and time zones.`,
 };
 
 export const stats = [
   { label: "Years of IT Experience", value: "20+" },
-  { label: "Microsoft C# MVP", value: "2005-2019 (15 yrs)" },
-  { label: "Training Sessions Delivered (2020-Present)", value: "272+" },
-  { label: "Startups Founded", value: "3" },
+  { label: "Microsoft C# MVP", value: "2005-2019" },
+  { label: "Training Sessions Delivered", value: "270+" },
+  { label: "Teams Trained", value: "Global" },
 ];
 
 // Training sessions delivered per year as a Microsoft Certified Trainer. 2020-2024 counts are
