@@ -129,18 +129,18 @@ export const communityActivities = [
 // Active Microsoft certifications, per Microsoft Learn profile (14 items, screenshot-verified).
 // Note: badgeUrl points to locally cached SVG files from Microsoft Learn
 export const certifications = [
-  { title: "Microsoft Certified: Azure Solutions Architect Expert", status: "active", badgeUrl: "/images/badges/azure-solutions-architect.svg", badge: "🏗️" },
-  { title: "Microsoft Certified: DevOps Engineer Expert", status: "active", badgeUrl: "/images/badges/devops-engineer.svg", badge: "⚙️" },
-  { title: "Microsoft Certified: Azure AI Engineer Associate", status: "active", badgeUrl: "/images/badges/azure-ai-engineer.svg", badge: "🤖" },
-  { title: "Microsoft Certified: Azure Developer Associate", status: "active", badgeUrl: "/images/badges/azure-developer.svg", badge: "💻" },
-  { title: "Microsoft Certified: Azure Administrator Associate", status: "active", badgeUrl: "/images/badges/azure-administrator.svg", badge: "🛠️" },
-  { title: "Microsoft Certified: Azure Security Engineer Associate", status: "active", badgeUrl: "/images/badges/azure-security-engineer.svg", badge: "🔒" },
-  { title: "Microsoft Certified: Azure Network Engineer Associate", status: "active", badgeUrl: "/images/badges/azure-network-engineer.svg", badge: "🌐" },
-  { title: "Microsoft Certified: Identity and Access Administrator Associate", status: "active", badgeUrl: "/images/badges/identity-access-administrator.svg", badge: "🔐" },
-  { title: "Microsoft Certified: Azure AI Fundamentals", status: "active", badgeUrl: "/images/badges/azure-ai-fundamentals.svg", badge: "🧠" },
-  { title: "Microsoft Certified: Azure Fundamentals", status: "active", badgeUrl: "/images/badges/azure-fundamentals.svg", badge: "☁️" },
-  { title: "GitHub Copilot Certification", status: "active", badge: "🤖" },
-  { title: "Microsoft Certified Trainer (MCT)", status: "active", note: "2023-2025", badge: "👨‍🏫" },
+  { title: "Microsoft Certified: Azure Solutions Architect Expert", status: "active", badgeUrl: "/images/badges/Azure Solutions Architect.png", badge: "🏗️" },
+  { title: "Microsoft Certified: DevOps Engineer Expert", status: "active", badgeUrl: "/images/badges/DevOps Engineer.png", badge: "⚙️" },
+  { title: "Microsoft Certified: Azure AI Engineer Associate", status: "active", badgeUrl: "/images/badges/Azure AI Engineer.png", badge: "🤖" },
+  { title: "Microsoft Certified: Azure Developer Associate", status: "active", badgeUrl: "/images/badges/Azure Developer.png", badge: "💻" },
+  { title: "Microsoft Certified: Azure Administrator Associate", status: "active", badgeUrl: "/images/badges/Azure Administrator.png", badge: "🛠️" },
+  { title: "Microsoft Certified: Azure Security Engineer Associate", status: "active", badgeUrl: "/images/badges/Azure Security Engineer.png", badge: "🔒" },
+  { title: "Microsoft Certified: Azure Network Engineer Associate", status: "active", badgeUrl: "/images/badges/Azure Network Engineer.png", badge: "🌐" },
+  { title: "Microsoft Certified: Identity and Access Administrator Associate", status: "active", badgeUrl: "/images/badges/Identity and Access Administrator.png", badge: "🔐" },
+  { title: "Microsoft Certified: Azure AI Fundamentals", status: "active", badgeUrl: "/images/badges/Azure AI Fundamentals.png", badge: "🧠" },
+  { title: "Microsoft Certified: Azure Fundamentals", status: "active", badgeUrl: "/images/badges/Azure Fundamentals.png", badge: "☁️" },
+  { title: "GitHub Copilot Certification", status: "active", badgeUrl: "/images/badges/GitHub Copilot.png", badge: "🤖" },
+  { title: "Microsoft Certified Trainer (MCT)", status: "active", badgeUrl: "/images/badges/MCT.png", note: "2023-2025", badge: "👨‍🏫" },
   { title: "Microsoft Certified: Azure Solutions Architect Expert (Legacy)", status: "legacy" },
 ];
 
