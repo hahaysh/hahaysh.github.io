@@ -215,7 +215,7 @@ This portfolio supports **Korean (primary) and English (secondary)** with proper
 
 - **Primary Language**: Korean (default content language)
 - **Secondary Language**: English (synced from Korean)
-- **Routing**: Path-based language detection (`/` for Korean, `/ko/` for mirrored Korean, `/` for English)
+- **Routing**: Path-based language detection (`/` for Korean, `/en/` for mirrored English)
 - **Content Structure**: Primary data files (`data.ts` for Korean, `data.en.ts` for English)
 
 ### File Structure
@@ -227,11 +227,12 @@ src/
 │   ├── data.ts           # �🇷 Korean content (PRIMARY)
 │   └── data.en.ts        # 🇬🇧 English content (SECONDARY)
 ├── pages/
-│   ├── index.astro       # English: /
-│   ├── about.astro       # English: /about
-│   ├── ko/               # Korean pages folder
-│   │   ├── index.astro   # Korean: /ko/
-│   │   ├── about.astro   # Korean: /ko/about
+│   ├── index.astro       # Korean: /
+│   ├── about.astro       # Korean: /about
+│   ├── portfolio/        # Korean portfolio detail pages
+│   ├── en/               # English pages folder, synced to Korean structure
+│   │   ├── index.astro   # English: /en/
+│   │   ├── about.astro   # English: /en/about
 │   │   └── ...           # All pages mirrored
 │   └── ...
 └── components/
@@ -282,14 +283,14 @@ src/
    ```
 
 3. **The certification automatically appears in:**
-   - `/ko/certifications` (Korean)
-   - `/certifications` (English)
+   - `/certifications` (Korean)
+   - `/en/certifications` (English)
 
 ### Language Switcher
 
 - Located in header on every page
 - Displays as "En / 한국어" toggle button
-- Automatically switches between `/` ↔ `/ko/`
+- Automatically switches between `/` ↔ `/en/`
 - Preserves current page context during switch
 - Dark mode and responsive design included
 
@@ -299,14 +300,14 @@ The `i18n.ts` module provides helper functions for multilingual pages:
 
 ```typescript
 // Get current language from URL path
-const language = getLanguageFromPath('/ko/about');  // Returns: 'ko'
+const language = getLanguageFromPath('/en/about');  // Returns: 'en'
 
 // Convert path between languages
-const koPath = getLocalizedPath('/about', 'ko');    // Returns: '/ko/about'
-const enPath = getLocalizedPath('/ko/about', 'en'); // Returns: '/about'
+const koPath = getLocalizedPath('/en/about', 'ko'); // Returns: '/about'
+const enPath = getLocalizedPath('/about', 'en');     // Returns: '/en/about'
 
 // Get language switcher link
-const toggleLink = getSwitcherLink('ko', '/ko/about'); // Returns: '/about'
+const toggleLink = getSwitcherLink('ko', '/about'); // Returns: '/en/about'
 
 // Translate UI labels
 const label = t('About', 'ko');  // Returns: '소개'
@@ -316,33 +317,33 @@ const label = t('About', 'ko');  // Returns: '소개'
 
 When adding a new page to the portfolio:
 
-1. Create English version: `src/pages/[page-name].astro`
+1. Create Korean version first: `src/pages/[page-name].astro`
    - Import: `import * as data from '../lib/data'`
-   - Header: `<Header currentPage="/[page-name]" lang="en" />`
+   - Header: `<Header currentPage="/[page-name]" lang="ko" />`
 
-2. Create Korean version: `src/pages/ko/[page-name].astro`
-   - Import: `import * as dataKo from '../../lib/data.ko'`
-   - Header: `<Header currentPage="/ko/[page-name]" lang="ko" />`
+2. Create the synced English version: `src/pages/en/[page-name].astro`
+   - Import: `import * as data from '../../lib/data.en'`
+   - Header: `<Header currentPage="/en/[page-name]" lang="en" />`
 
 3. Use identical component structure in both versions
 
 ### Maintenance Reminders
 
-- **Content Updates**: Always edit English version (`data.ts`) first
-- **Quarterly Review**: Check Korean translations haven't diverged significantly
+- **Content Updates**: Always edit Korean version (`data.ts`) first
+- **Quarterly Review**: Check English translations haven't diverged significantly
 - **Badge Files**: Reference paths are identical in both languages
-- **Links**: Update both `/` and `/ko/` paths when adding new routes
+- **Links**: Update both `/` and `/en/` paths when adding new routes
 - **Testing**: Build and preview both language versions before deploying
 
 ```bash
 # To test multilingual build:
 npm run build
-# Verify both /pages/ and /ko/pages/ routes in dist/
+# Verify both root and /en/ routes in dist/
 
 npm run preview
 # Navigate to:
 # - http://localhost:3000/
-# - http://localhost:3000/ko/
+# - http://localhost:3000/en/
 ```
 
 ---

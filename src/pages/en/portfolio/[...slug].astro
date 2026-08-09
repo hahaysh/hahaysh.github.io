@@ -1,0 +1,334 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { title, description, year, client, teamSize, technologies, achievements } = project.data;
+---
+
+<BaseLayout title={`${title} - SungHo You`} description={description} lang="en">
+  <Header currentPage="/en/portfolio" lang="en" />
+  <main class="main">
+    <section class="project-hero">
+      <div class="container">
+        <a href="/en/portfolio" class="back-link">← Back to Portfolio</a>
+        <h1>{title}</h1>
+        <div class="project-meta">
+          <div class="meta-item">
+            <span class="label">Year</span>
+            <span class="value">{year}</span>
+          </div>
+          <div class="meta-item">
+            <span class="label">Client</span>
+            <span class="value">{client}</span>
+          </div>
+          <div class="meta-item">
+            <span class="label">Team Size</span>
+            <span class="value">{teamSize}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-content">
+      <div class="container">
+        <div class="content-grid">
+          <div class="main-content">
+            <h2>Overview</h2>
+            <p>{description}</p>
+
+            <h2>Key Achievements</h2>
+            <ul class="achievements-list">
+              {achievements.map((achievement) => (
+                <li>
+                  <span class="checkmark">✓</span>
+                  <span>{achievement}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <aside class="sidebar">
+            <div class="tech-section">
+              <h3>Technology Stack</h3>
+              <div class="tech-tags">
+                {technologies.map((tech) => (
+                  <span class="tech-tag">{tech}</span>
+                ))}
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <h2>Interested in Similar Solutions?</h2>
+        <p>Let's discuss how these approaches can benefit your organization.</p>
+        <a href="/en/contact" class="btn btn-primary">Start a Conversation</a>
+      </div>
+    </section>
+  </main>
+  <Footer lang="en" />
+</BaseLayout>
+
+<style>
+  .main {
+    min-height: 100vh;
+  }
+
+  .project-hero {
+    padding: 3rem 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .project-hero {
+      border-bottom-color: #334155;
+    }
+  }
+
+  .back-link {
+    display: inline-block;
+    color: #0066cc;
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .back-link {
+      color: #60a5fa;
+    }
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+
+  .project-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .project-meta {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .meta-item .label {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #666;
+    font-weight: 600;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .meta-item .label {
+      color: #94a3b8;
+    }
+  }
+
+  .meta-item .value {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .project-content {
+    padding: 3rem 0;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .main-content h2 {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+  }
+
+  .main-content h2:first-child {
+    margin-top: 0;
+  }
+
+  .main-content p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .main-content p {
+      color: #cbd5e1;
+    }
+  }
+
+  .achievements-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .achievements-list li {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .achievements-list li {
+      color: #cbd5e1;
+    }
+  }
+
+  .checkmark {
+    color: #22c55e;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+  }
+
+  .tech-section {
+    background: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .tech-section {
+      background: #1e293b;
+    }
+  }
+
+  .tech-section h3 {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    color: #1f2937;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .tech-section h3 {
+      color: #e2e8f0;
+    }
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-tag {
+    display: inline-block;
+    background: white;
+    border: 1px solid #e5e7eb;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: #666;
+    font-weight: 500;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .tech-tag {
+      background: #334155;
+      border-color: #475569;
+      color: #cbd5e1;
+    }
+  }
+
+  .cta {
+    background: #f9fafb;
+    padding: 3rem 0;
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cta {
+      background: #1e293b;
+    }
+  }
+
+  .cta h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cta p {
+      color: #cbd5e1;
+    }
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: #0066cc;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #0052a3;
+    text-decoration: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .btn-primary {
+      background: #3b82f6;
+    }
+
+    .btn-primary:hover {
+      background: #2563eb;
+    }
+  }
+</style>

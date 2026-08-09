@@ -3,18 +3,18 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { expertise as expertiseConfig } from '../../lib/data';
+import { expertise as expertiseConfig } from '../../lib/data.en';
 
 const expertiseCollection = await getCollection('expertise');
 ---
 
-<BaseLayout title="전문성 - 유성호" description="클라우드 아키텍처, DevOps, AI 에이전트 및 기술 교육">
-  <Header currentPage="/ko/expertise" lang="ko" />
+<BaseLayout title="Expertise - SungHo You" description="Cloud Architecture, DevOps, AI Agents, and Technical Training" lang="en">
+  <Header currentPage="/en/expertise" lang="en" />
   <main>
     <section class="expertise-section">
       <div class="container">
-        <h1>전문성</h1>
-        <p class="intro">나는 엔터프라이즈 변환 이니셔티브를 통해 개발된 4가지 핵심 분야에 걸쳐 깊은 기술 전문성을 가지고 있습니다.</p>
+        <h1>Expertise</h1>
+        <p class="intro">I bring deep technical expertise across four core areas, developed through years of enterprise transformation initiatives.</p>
         
         <div class="expertise-grid">
           {expertiseConfig.map((item) => {
@@ -40,7 +40,7 @@ const expertiseCollection = await getCollection('expertise');
 
     <section class="details-section">
       <div class="container">
-        <h2>상세 설명</h2>
+        <h2>Deep Dive</h2>
         <div class="expertise-details">
           {expertiseCollection.map((item) => (
             <div class="detail-item">
@@ -52,7 +52,7 @@ const expertiseCollection = await getCollection('expertise');
       </div>
     </section>
   </main>
-  <Footer />
+  <Footer lang="en" />
 </BaseLayout>
 
 <style>
@@ -199,12 +199,23 @@ const expertiseCollection = await getCollection('expertise');
   .detail-item h3 {
     font-size: 1.25rem;
     margin-bottom: 1rem;
-    color: #0066cc;
+    color: #1f2937;
   }
 
   @media (prefers-color-scheme: dark) {
     .detail-item h3 {
-      color: #60a5fa;
+      color: #e2e8f0;
+    }
+  }
+
+  .detail-content {
+    color: #666;
+    line-height: 1.8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .detail-content {
+      color: #cbd5e1;
     }
   }
 

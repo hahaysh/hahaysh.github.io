@@ -1,0 +1,290 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { siteConfig, bio, stats } from '../../lib/data.en';
+---
+
+<BaseLayout title={siteConfig.title} description={siteConfig.description} lang="en">
+  <Header currentPage="/en/" lang="en" />
+  <main class="main-container">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>{siteConfig.name}</h1>
+            <p class="tagline">{bio.short}</p>
+            <p class="bio">{bio.long}</p>
+            <div class="cta-buttons">
+              <a href="/en/portfolio" class="btn btn-primary">View My Work</a>
+              <a href="/en/contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img src="/images/profile/sungo-you.jpg" alt={siteConfig.name} />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="container">
+        <div class="stats-grid">
+          {stats.map((stat) => (
+            <div class="stat-item">
+              <div class="stat-value">{stat.value}</div>
+              <div class="stat-label">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to Transform Your Business?</h2>
+        <p>Let's discuss how cloud architecture, AI, and DevOps can drive your organization forward.</p>
+        <a href="/en/contact" class="btn btn-primary">Start a Conversation</a>
+      </div>
+    </section>
+  </main>
+  <Footer lang="en" />
+</BaseLayout>
+
+<style>
+  .main-container {
+    flex: 1;
+  }
+
+  .hero {
+    padding: 4rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 2rem 0;
+    }
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .hero-text h1 {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .tagline {
+    font-size: 1.25rem;
+    color: #0066cc;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .tagline {
+      color: #60a5fa;
+    }
+  }
+
+  .bio {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 2rem;
+    white-space: pre-wrap;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .bio {
+      color: #cbd5e1;
+    }
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: #0066cc;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #0052a3;
+    text-decoration: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .btn-primary {
+      background: #3b82f6;
+    }
+
+    .btn-primary:hover {
+      background: #2563eb;
+    }
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: #0066cc;
+    border: 2px solid #0066cc;
+  }
+
+  .btn-secondary:hover {
+    background: #0066cc;
+    color: white;
+    text-decoration: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .btn-secondary {
+      color: #60a5fa;
+      border-color: #60a5fa;
+    }
+
+    .btn-secondary:hover {
+      background: #3b82f6;
+      color: white;
+    }
+  }
+
+  .hero-image {
+    text-align: center;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .hero-image img {
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .stats {
+    background: #f9fafb;
+    padding: 3rem 0;
+    margin: 2rem 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .stats {
+      background: #1e293b;
+    }
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #0066cc;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .stat-value {
+      color: #60a5fa;
+    }
+  }
+
+  .stat-label {
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .stat-label {
+      color: #cbd5e1;
+    }
+  }
+
+  .cta-section {
+    background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+    margin: 2rem 0 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cta-section {
+      background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    }
+  }
+
+  .cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-section p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+  }
+
+  .cta-section .btn-primary {
+    background: white;
+    color: #0066cc;
+  }
+
+  .cta-section .btn-primary:hover {
+    background: #f0f0f0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cta-section .btn-primary {
+      background: #1e293b;
+      color: #60a5fa;
+    }
+
+    .cta-section .btn-primary:hover {
+      background: #334155;
+    }
+  }
+</style>

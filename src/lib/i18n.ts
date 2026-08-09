@@ -16,29 +16,29 @@ export const LANGUAGES: Record<Language, string> = {
   ko: "한국어",
 };
 
-export const DEFAULT_LANGUAGE: Language = "en";
+export const DEFAULT_LANGUAGE: Language = "ko";
 
 /**
  * Get the language from URL pathname
- * Returns "ko" if pathname starts with "/ko"
- * Returns "en" (default) otherwise
+ * Returns "en" if pathname starts with "/en"
+ * Returns "ko" (default) otherwise
  */
 export function getLanguageFromPath(pathname: string): Language {
-  if (pathname.startsWith("/ko")) {
-    return "ko";
+  if (pathname.startsWith("/en")) {
+    return "en";
   }
   return DEFAULT_LANGUAGE;
 }
 
 /**
  * Get the localized pathname
- * Adds /ko prefix for Korean, keeps root for English
+ * Adds /en prefix for English, keeps root for Korean
  */
 export function getLocalizedPath(pathname: string, lang: Language): string {
   const cleanPath = pathname.replace(/^\/(en|ko)/, "") || "/";
 
-  if (lang === "ko") {
-    return `/ko${cleanPath === "/" ? "" : cleanPath}`;
+  if (lang === "en") {
+    return `/en${cleanPath === "/" ? "/" : cleanPath}`;
   }
   return cleanPath;
 }

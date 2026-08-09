@@ -1,0 +1,794 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { siteConfig, bio, stats, certifications, awards, publications, startupExperience, startupProducts } from '../../lib/data.en';
+---
+
+<BaseLayout title="About - SungHo You" description="Learn more about my background and experience" lang="en">
+  <Header currentPage="/en/about" lang="en" />
+  <main>
+    <section class="about-hero">
+      <div class="container">
+        <h1>About Me</h1>
+        <div class="about-content">
+          <div class="about-text">
+            <p class="intro-bio">{bio.long}</p>
+
+            <h2>What I'm Passionate About</h2>
+            <ul class="focus-areas">
+              <li><strong>Azure Cloud Platform:</strong> From infrastructure to serverless solutions, I love designing systems that scale.</li>
+              <li><strong>DevOps & Transformation:</strong> Helping organizations move faster and ship better software through modern practices.</li>
+              <li><strong>AI & Intelligent Agents:</strong> Exploring how AI will reshape the way we build software and solve problems.</li>
+              <li><strong>Teaching & Mentoring:</strong> There's nothing better than that moment when something clicks for someone you're training.</li>
+              <li><strong>Enterprise Architecture:</strong> Building reliable systems that serve millions of users across global markets.</li>
+              <li><strong>GitHub & Developer Tools:</strong> Making developers' lives easier with modern tooling and practices.</li>
+            </ul>
+
+            <h2>By The Numbers</h2>
+            <div class="stats-display">
+              {stats.map((stat) => (
+                <div class="stat">
+                  <div class="stat-num">{stat.value}</div>
+                  <div class="stat-desc">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <aside class="about-sidebar">
+            <img src="/images/profile/sungo-you.jpg" alt={siteConfig.name} class="profile-image" />
+            <div class="contact-card">
+              <h3>Let's Connect</h3>
+              <p>Interested in discussing cloud architecture, AI solutions, or training initiatives?</p>
+              <a href={`mailto:${siteConfig.email}`} class="btn">Email Me</a>
+              <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="startup-section">
+      <div class="container">
+        <h2>Startup & Enterprise Experience</h2>
+        <p class="intro-text">Before joining Microsoft as a Certified Trainer in 2019, I led technical organizations at multiple startups, delivering enterprise-grade solutions for Fortune 500 companies across finance, retail, automotive, and media sectors.</p>
+        
+        {startupExperience.map((startup) => (
+          <div class="startup-card">
+            <div class="startup-header">
+              <h3>{startup.company}</h3>
+              <div class="startup-meta">
+                <span class="position">{startup.position}</span>
+                <span class="period">{startup.period}</span>
+              </div>
+            </div>
+            <p class="startup-description">{startup.description}</p>
+            
+            {startup.keyProjects && startup.keyProjects.length > 0 && (
+              <div class="projects">
+                <h4>Key Projects</h4>
+                <ul>
+                  {startup.keyProjects.map((project) => (
+                    <li>
+                      <strong>{project.title}</strong>
+                      {project.description && <p>{project.description}</p>}
+                      {project.impact && <p class="impact">💡 {project.impact}</p>}
+                      {project.patent && <p class="patent">🏆 특허: {project.patent}</p>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            
+            {startup.achievements && startup.achievements.length > 0 && (
+              <div class="achievements">
+                <h4>Key Achievements</h4>
+                <ul>
+                  {startup.achievements.map((achievement) => (
+                    <li>{achievement}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        ))}
+
+        <h2>Products & Services</h2>
+        <p class="intro-text">Core products developed during startup years that served enterprise customers:</p>
+        
+        <div class="products-grid">
+          {startupProducts.map((product) => (
+            <div class="product-card">
+              <h3>{product.name}</h3>
+              <p class="subtitle">{product.subtitle}</p>
+              <div class="meta">
+                <span class="period">{product.period}</span>
+                <span class="company">{product.company}</span>
+              </div>
+              <p class="description">{product.description}</p>
+              <div class="technologies">
+                {product.technologies.map((tech) => (
+                  <span class="tech-tag">{tech}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="certifications-section">
+      <div class="container">
+        <h2>Certifications & Credentials</h2>
+        <p class="note">{certifications.length} Microsoft certifications (active and legacy). See the full list on the <a href="/en/certifications">Certifications</a> page.</p>
+
+        <h2>Awards & Recognition</h2>
+        <div class="awards-list">
+          {awards.map((award) => (
+            <div class="award-item">
+              <span class="award-title">{award.title}</span>
+              <span class="award-period">{award.period}</span>
+            </div>
+          ))}
+        </div>
+
+        <h2>Publications</h2>
+        <ul class="focus-areas">
+          {publications.map((pub) => (
+            <li>{pub.title} ({pub.year}, {pub.publisher})</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  </main>
+  <Footer lang="en" />
+</BaseLayout>
+
+<style>
+  .about-hero {
+    padding: 3rem 0;
+  }
+
+  .about-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .about-hero h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .about-content {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .about-text h2 {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+  }
+
+  .about-text h2:first-child {
+    margin-top: 0;
+  }
+
+  .about-text p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    white-space: pre-wrap;
+  }
+
+  .intro-bio {
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .intro-bio {
+      color: #e2e8f0;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .about-text p {
+      color: #cbd5e1;
+    }
+  }
+
+  .focus-areas {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+  }
+
+  .focus-areas li {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    background: #f9fafb;
+    border-left: 4px solid #0066cc;
+    border-radius: 4px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .focus-areas li {
+      background: #1e293b;
+      border-left-color: #3b82f6;
+      color: #cbd5e1;
+    }
+  }
+
+  .focus-areas strong {
+    color: #1f2937;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .focus-areas strong {
+      color: #e2e8f0;
+    }
+  }
+
+  .stats-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    background: #f9fafb;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .stats-display {
+      background: #1e293b;
+    }
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0066cc;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .stat-num {
+      color: #60a5fa;
+    }
+  }
+
+  .stat-desc {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .stat-desc {
+      color: #cbd5e1;
+    }
+  }
+
+  .about-sidebar {
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+  }
+
+  .profile-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .profile-image {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .contact-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .contact-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+  }
+
+  .contact-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .contact-card p {
+      color: #cbd5e1;
+    }
+  }
+
+  .btn {
+    display: block;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s;
+    background: #0066cc;
+    color: white;
+  }
+
+  .btn:hover {
+    background: #0052a3;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .btn {
+      background: #3b82f6;
+    }
+
+    .btn:hover {
+      background: #2563eb;
+    }
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: #0066cc;
+    border: 2px solid #0066cc;
+  }
+
+  .btn-secondary:hover {
+    background: #0066cc;
+    color: white;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .btn-secondary {
+      color: #60a5fa;
+      border-color: #60a5fa;
+    }
+
+    .btn-secondary:hover {
+      background: #3b82f6;
+      color: white;
+    }
+  }
+
+  .certifications-section {
+    padding: 3rem 0;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .certifications-section {
+      border-top-color: #334155;
+    }
+  }
+
+  .certifications-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .note {
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .note {
+      color: #94a3b8;
+    }
+  }
+
+  .awards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .award-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: #f9fafb;
+    border-radius: 6px;
+    flex-wrap: wrap;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .award-item {
+      background: #1e293b;
+    }
+  }
+
+  .award-title {
+    font-weight: 600;
+  }
+
+  .award-period {
+    color: #666;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .award-period {
+      color: #94a3b8;
+    }
+  }
+
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .cert-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cert-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+  }
+
+  .cert-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .cert-card h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .cert-issuer {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cert-issuer {
+      color: #94a3b8;
+    }
+  }
+
+  .verify-link {
+    display: inline-block;
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .verify-link {
+      color: #60a5fa;
+    }
+  }
+
+  .verify-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Startup Experience Styles */
+  .startup-section {
+    padding: 3rem 0;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-section {
+      border-top-color: #334155;
+    }
+  }
+
+  .startup-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .intro-text {
+    color: #666;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .intro-text {
+      color: #cbd5e1;
+    }
+  }
+
+  .startup-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+  }
+
+  .startup-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .startup-card h3 {
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .startup-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .startup-meta .position {
+    font-weight: 600;
+    color: #0066cc;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-meta .position {
+      color: #60a5fa;
+    }
+  }
+
+  .startup-meta .period {
+    color: #666;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-meta .period {
+      color: #94a3b8;
+    }
+  }
+
+  .startup-description {
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-description {
+      color: #cbd5e1;
+    }
+  }
+
+  .startup-card .projects,
+  .startup-card .achievements {
+    margin-top: 1.5rem;
+  }
+
+  .startup-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .startup-card .projects ul,
+  .startup-card .achievements ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .startup-card .projects li {
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    background: white;
+    border-left: 4px solid #0066cc;
+    border-radius: 4px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-card .projects li {
+      background: #0f172a;
+      border-left-color: #3b82f6;
+    }
+  }
+
+  .startup-card .projects li strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-card .projects li strong {
+      color: #e2e8f0;
+    }
+  }
+
+  .startup-card .projects li p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    color: #666;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-card .projects li p {
+      color: #cbd5e1;
+    }
+  }
+
+  .startup-card .projects li .impact,
+  .startup-card .projects li .patent {
+    font-weight: 500;
+    margin-top: 0.5rem;
+  }
+
+  .startup-card .achievements li {
+    padding: 0.75rem 0 0.75rem 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #666;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-card .achievements li {
+      color: #cbd5e1;
+    }
+  }
+
+  .startup-card .achievements li:before {
+    content: "✓ ";
+    color: #0066cc;
+    font-weight: bold;
+    margin-left: -1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-card .achievements li:before {
+      color: #60a5fa;
+    }
+  }
+
+  /* Products Grid */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .product-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .product-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+  }
+
+  .product-card h3 {
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .product-card .subtitle {
+    color: #666;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .product-card .subtitle {
+      color: #94a3b8;
+    }
+  }
+
+  .product-card .meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .product-card .period,
+  .product-card .company {
+    padding: 0.25rem 0.75rem;
+    background: white;
+    border-radius: 4px;
+    color: #666;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .product-card .period,
+    .product-card .company {
+      background: #0f172a;
+      color: #cbd5e1;
+    }
+  }
+
+  .product-card .description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .product-card .description {
+      color: #cbd5e1;
+    }
+  }
+
+  .technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #0066cc;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .tech-tag {
+      background: #3b82f6;
+    }
+  }
+</style>

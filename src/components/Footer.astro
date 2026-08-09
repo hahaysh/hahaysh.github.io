@@ -1,28 +1,36 @@
 ---
-import { siteConfig } from '../lib/data';
+import { siteConfig as koreanSiteConfig } from '../lib/data';
+import { siteConfig as englishSiteConfig } from '../lib/data.en';
+
+interface Props {
+  lang?: 'en' | 'ko';
+}
+
+const { lang = 'ko' } = Astro.props;
+const siteConfig = lang === 'ko' ? koreanSiteConfig : englishSiteConfig;
 ---
 
 <footer class="footer">
   <div class="container">
     <div class="footer-content">
       <div class="footer-section">
-        <h3>Contact</h3>
+        <h3>{lang === 'ko' ? '연락처' : 'Contact'}</h3>
         <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
       </div>
       <div class="footer-section">
-        <h3>Social</h3>
+        <h3>{lang === 'ko' ? '소셜' : 'Social'}</h3>
         <div class="social-links">
           <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
       <div class="footer-section">
-        <h3>Built with</h3>
+        <h3>{lang === 'ko' ? '기술 스택' : 'Built with'}</h3>
         <p>Astro • TypeScript • GitHub Pages</p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
+      <p>&copy; {new Date().getFullYear()} {siteConfig.name}. {lang === 'ko' ? '모든 권리 보유.' : 'All rights reserved.'}</p>
     </div>
   </div>
 </footer>

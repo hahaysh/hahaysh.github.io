@@ -2,11 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { siteConfig, bio, stats } from '../lib/data.en';
+import { siteConfig, bio, stats } from '../lib/data';
+
+const lang = 'ko';
 ---
 
 <BaseLayout title={siteConfig.title} description={siteConfig.description}>
-  <Header currentPage="/" lang="en" />
+  <Header currentPage="/" lang={lang} />
   <main class="main-container">
     <section class="hero">
       <div class="container">
@@ -16,8 +18,8 @@ import { siteConfig, bio, stats } from '../lib/data.en';
             <p class="tagline">{bio.short}</p>
             <p class="bio">{bio.long}</p>
             <div class="cta-buttons">
-              <a href="/portfolio" class="btn btn-primary">View My Work</a>
-              <a href="/contact" class="btn btn-secondary">Get in Touch</a>
+              <a href="/portfolio" class="btn btn-primary">내 작업 보기</a>
+              <a href="/contact" class="btn btn-secondary">연락하기</a>
             </div>
           </div>
           <div class="hero-image">
@@ -42,13 +44,13 @@ import { siteConfig, bio, stats } from '../lib/data.en';
 
     <section class="cta-section">
       <div class="container">
-        <h2>Ready to Transform Your Business?</h2>
-        <p>Let's discuss how cloud architecture, AI, and DevOps can drive your organization forward.</p>
-        <a href="/contact" class="btn btn-primary">Start a Conversation</a>
+        <h2>클라우드와 AI로 다음 단계를 준비하고 계신가요?</h2>
+        <p>현재 상황과 해결하려는 문제를 바탕으로, 클라우드 아키텍처와 AI·DevOps를 어떻게 활용할 수 있을지 함께 살펴보겠습니다.</p>
+        <a href="/contact" class="btn btn-primary">대화 시작하기</a>
       </div>
     </section>
   </main>
-  <Footer />
+  <Footer lang="ko" />
 </BaseLayout>
 
 <style>
@@ -99,120 +101,77 @@ import { siteConfig, bio, stats } from '../lib/data.en';
     font-weight: 600;
   }
 
-  @media (prefers-color-scheme: dark) {
-    .tagline {
-      color: #60a5fa;
-    }
-  }
-
   .bio {
     font-size: 1rem;
-    line-height: 1.8;
-    color: #666;
+    line-height: 1.6;
+    color: #555;
     margin-bottom: 2rem;
     white-space: pre-wrap;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .bio {
-      color: #cbd5e1;
-    }
   }
 
   .cta-buttons {
     display: flex;
     gap: 1rem;
-    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .cta-buttons {
+      flex-direction: column;
+    }
   }
 
   .btn {
-    display: inline-block;
     padding: 0.75rem 1.5rem;
-    border-radius: 6px;
-    font-weight: 600;
-    transition: all 0.3s;
+    border-radius: 0.5rem;
     text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.3s ease;
     border: none;
     cursor: pointer;
   }
 
   .btn-primary {
-    background: #0066cc;
+    background-color: #0066cc;
     color: white;
   }
 
   .btn-primary:hover {
-    background: #0052a3;
-    text-decoration: none;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .btn-primary {
-      background: #3b82f6;
-    }
-
-    .btn-primary:hover {
-      background: #2563eb;
-    }
+    background-color: #0052a3;
   }
 
   .btn-secondary {
-    background: transparent;
-    color: #0066cc;
-    border: 2px solid #0066cc;
+    background-color: #f0f0f0;
+    color: #333;
   }
 
   .btn-secondary:hover {
-    background: #0066cc;
-    color: white;
-    text-decoration: none;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .btn-secondary {
-      color: #60a5fa;
-      border-color: #60a5fa;
-    }
-
-    .btn-secondary:hover {
-      background: #3b82f6;
-      color: white;
-    }
-  }
-
-  .hero-image {
-    text-align: center;
+    background-color: #e0e0e0;
   }
 
   .hero-image img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
-    border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .hero-image img {
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
+    border-radius: 0.5rem;
   }
 
   .stats {
-    background: #f9fafb;
-    padding: 3rem 0;
-    margin: 2rem 0;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .stats {
-      background: #1e293b;
-    }
+    padding: 4rem 0;
+    background-color: #f9f9f9;
   }
 
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
   }
 
   .stat-item {
@@ -220,41 +179,20 @@ import { siteConfig, bio, stats } from '../lib/data.en';
   }
 
   .stat-value {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: bold;
     color: #0066cc;
-    margin-bottom: 0.5rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .stat-value {
-      color: #60a5fa;
-    }
   }
 
   .stat-label {
-    color: #666;
     font-size: 0.9rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .stat-label {
-      color: #cbd5e1;
-    }
+    color: #666;
+    margin-top: 0.5rem;
   }
 
   .cta-section {
-    background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
-    color: white;
     padding: 4rem 0;
     text-align: center;
-    margin: 2rem 0 0;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .cta-section {
-      background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
-    }
   }
 
   .cta-section h2 {
@@ -264,27 +202,30 @@ import { siteConfig, bio, stats } from '../lib/data.en';
 
   .cta-section p {
     font-size: 1.1rem;
+    color: #555;
     margin-bottom: 2rem;
-    opacity: 0.95;
-  }
-
-  .cta-section .btn-primary {
-    background: white;
-    color: #0066cc;
-  }
-
-  .cta-section .btn-primary:hover {
-    background: #f0f0f0;
   }
 
   @media (prefers-color-scheme: dark) {
-    .cta-section .btn-primary {
-      background: #1e293b;
-      color: #60a5fa;
+    .bio {
+      color: #ccc;
     }
 
-    .cta-section .btn-primary:hover {
-      background: #334155;
+    .stats {
+      background-color: #1a1a1a;
+    }
+
+    .btn-secondary {
+      background-color: #333;
+      color: #f0f0f0;
+    }
+
+    .btn-secondary:hover {
+      background-color: #444;
+    }
+
+    .cta-section p {
+      color: #ccc;
     }
   }
 </style>

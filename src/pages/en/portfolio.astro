@@ -1,0 +1,215 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => b.data.year - a.data.year
+);
+---
+
+<BaseLayout title="Portfolio - SungHo You" description="Browse my project portfolio and case studies" lang="en">
+  <Header currentPage="/en/portfolio" lang="en" />
+  <main>
+    <section class="portfolio-section">
+      <div class="container">
+        <h1>Portfolio</h1>
+        <p class="intro">
+          Selected projects spanning two distinct phases of my career:
+          <br/>
+          <strong>Pre-Microsoft (2009-2019):</strong> DevOps and cloud migration projects as Technical Director at (주)디벨로피언스
+          <br/>
+          <strong>Microsoft Era (2019-Present):</strong> Hands-on PoCs and enterprise AI/Copilot adoption programs as Microsoft Certified Trainer
+          <br/>
+          <br/>
+          These experiences reflect my philosophy: moving beyond training slides to hands-on implementation, real business outcomes, and validated architectural patterns.
+        </p>
+        
+        <div class="projects-grid">
+          {projects.map((project) => (
+            <ProjectCard
+              title={project.data.title}
+              description={project.data.description}
+              year={project.data.year}
+              client={project.data.client}
+              technologies={project.data.technologies}
+              achievements={project.data.achievements}
+              slug={project.id}
+              lang="en"
+            />
+          ))}
+        </div>
+
+        <h2 class="contributions-heading">Microsoft Era Contributions (2019-Present)</h2>
+        <p class="contributions-intro">Beyond hands-on PoCs with customers, my work as a Microsoft Certified Trainer encompasses curriculum development, content creation, governance readiness, and community enablement across Azure, AI, GitHub Copilot, and Microsoft 365 platforms.</p>
+        
+        <div class="contributions-grid">
+          <div class="contribution-card">
+            <h3>🎓 Customer Technical Delivery</h3>
+            <p><strong>Scope:</strong> LG GitHub Copilot (GH-300) professional development</p>
+            <p><strong>Activities:</strong> Hands-on lab design, introduction/demo materials, MCP reference documentation, agentic AI patterns guidance, structured curriculum progression from basics to advanced multi-agent orchestration.</p>
+          </div>
+          
+          <div class="contribution-card">
+            <h3>🚀 Copilot / AI Enablement</h3>
+            <p><strong>Scope:</strong> Hyundai Mobis GitHub Copilot adoption and feedback-driven iteration</p>
+            <p><strong>Activities:</strong> Training delivery, post-session feedback collection, curriculum refinement, hands-on environment setup, governance framework documentation, champion network establishment.</p>
+          </div>
+
+          <div class="contribution-card">
+            <h3>🤖 AI Foundry & Governance Readiness</h3>
+            <p><strong>Scope:</strong> Pre-delivery customer readiness for AI-3016/AI-3026 courses</p>
+            <p><strong>Activities:</strong> Microsoft Foundry operations and governance assessment, customer concern analysis, curriculum alignment, operational readiness guidance.</p>
+          </div>
+
+          <div class="contribution-card">
+            <h3>📊 Strategic Content Creation</h3>
+            <p><strong>Scope:</strong> CAIP Team enablement and FY27 Trainer Reimagined initiative</p>
+            <p><strong>Activities:</strong> Frontier Transformation content (Korean/English), comprehensive deck/document preparation, strategic positioning materials, trainer capability frameworks.</p>
+          </div>
+
+          <div class="contribution-card">
+            <h3>🌍 Community & Field Enablement</h3>
+            <p><strong>Scope:</strong> Korea MCT Summit, regional customer initiatives (e.g., MS-4018 with LG)</p>
+            <p><strong>Activities:</strong> Community event materials, field enablement resources, trainer network support, regional customization guidance.</p>
+          </div>
+
+          <div class="contribution-card">
+            <h3>📋 Activity Portfolio Management</h3>
+            <p><strong>Scope:</strong> Comprehensive documentation of Microsoft-era work</p>
+            <p><strong>Outcomes:</strong> 66+ documented activities covering customer delivery, content creation, training optimization, and strategic initiatives since November 2019.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer lang="en" />
+</BaseLayout>
+
+<style>
+  .portfolio-section {
+    padding: 3rem 0;
+  }
+
+  .portfolio-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .portfolio-section h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .intro {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 65ch;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .intro {
+      color: #cbd5e1;
+    }
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .contributions-heading {
+    font-size: 1.8rem;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  .contributions-intro {
+    font-size: 1rem;
+    color: #666;
+    max-width: 65ch;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .contributions-intro {
+      color: #cbd5e1;
+    }
+  }
+
+  .contributions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .contribution-card {
+    padding: 1.5rem;
+    background: #f5f5f5;
+    border-left: 4px solid #0078d4;
+    border-radius: 4px;
+    transition: box-shadow 0.2s ease-in-out;
+  }
+
+  .contribution-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .contribution-card {
+      background: #2d2d2d;
+      border-left-color: #4fc3f7;
+    }
+
+    .contribution-card:hover {
+      box-shadow: 0 4px 12px rgba(79, 195, 247, 0.2);
+    }
+  }
+
+  .contribution-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .contribution-card p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    color: #555;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .contribution-card p {
+      color: #b0b0b0;
+    }
+  }
+
+  .contribution-card strong {
+    color: #333;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .contribution-card strong {
+      color: #e0e0e0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contributions-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
