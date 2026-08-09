@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { siteConfig, bio, stats, certifications, awards, publications, startupExperience, startupProducts } from '../../lib/data.en';
+import { siteConfig, bio, koreaMctCommunity, stats, certifications, awards, publications, startupExperience, startupProducts } from '../../lib/data.en';
 ---
 
 <BaseLayout title="About - SungHo You" description="Learn more about my background and experience" lang="en">
@@ -45,6 +45,31 @@ import { siteConfig, bio, stats, certifications, awards, publications, startupEx
               <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
             </div>
           </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="community-section">
+      <div class="container">
+        <div class="community-card">
+          <div class="community-heading">
+            <div>
+              <p class="eyebrow">Community Leadership</p>
+              <h2>{koreaMctCommunity.title}</h2>
+            </div>
+            <span class="community-role">{koreaMctCommunity.role}</span>
+          </div>
+          <p class="community-description">{koreaMctCommunity.description}</p>
+          <ul class="community-highlights">
+            {koreaMctCommunity.highlights.map((highlight) => (
+              <li>{highlight}</li>
+            ))}
+          </ul>
+          <div class="community-links">
+            {koreaMctCommunity.links.map((link) => (
+              <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label} ↗</a>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -165,6 +190,99 @@ import { siteConfig, bio, stats, certifications, awards, publications, startupEx
     display: grid;
     grid-template-columns: 1fr 300px;
     gap: 3rem;
+  }
+
+  .community-section {
+    padding: 1rem 0 3rem;
+  }
+
+  .community-card {
+    padding: 2rem;
+    background: linear-gradient(135deg, #eef6ff, #f8f9fa);
+    border: 1px solid #d7e8fa;
+    border-left: 4px solid #0066cc;
+    border-radius: 0.5rem;
+  }
+
+  .community-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .community-heading h2,
+  .eyebrow {
+    margin: 0;
+  }
+
+  .eyebrow {
+    margin-bottom: 0.35rem;
+    color: #0066cc;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .community-role {
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  .community-description {
+    max-width: 900px;
+    line-height: 1.7;
+  }
+
+  .community-highlights {
+    padding-left: 1.25rem;
+    line-height: 1.7;
+  }
+
+  .community-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .community-links a {
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .community-links a:hover {
+    text-decoration: underline;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .community-card {
+      background: linear-gradient(135deg, #10243d, #1e293b);
+      border-color: #24486f;
+      border-left-color: #60a5fa;
+    }
+
+    .eyebrow {
+      color: #60a5fa;
+    }
+
+    .community-role {
+      color: #bbb;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .community-heading {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .community-role {
+      text-align: left;
+    }
   }
 
   @media (max-width: 768px) {

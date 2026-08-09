@@ -33,6 +33,23 @@ export const bio = {
 최근에는 AI와 지능형 에이전트가 소프트웨어를 만드는 방식을 어떻게 바꿀지 집중해서 살펴보고 있습니다. 기술은 결국 사람과 조직을 위한 것이므로, 복잡한 내용을 이해하기 쉬운 언어로 전달하고 실제 변화로 이어지게 하는 일을 계속해 나가고 있습니다.`,
 };
 
+export const koreaMctCommunity = {
+  title: "Korea MCT 커뮤니티",
+  role: "오거나이저 · 발표자 · 커뮤니티 기록 기여자",
+  description: "Korea MCT 오거나이저로서 전·현직 Microsoft Certified Trainer가 지속적으로 배우고 연결될 수 있는 커뮤니티를 이끌고 있습니다. 2024년부터 정기 온라인 벙개와 오프라인 모임을 기획·운영하고, 행사 기록과 발표 자료를 GitHub에 정리해 커뮤니티의 경험이 계속 공유되도록 기여하고 있습니다.",
+  highlights: [
+    "2024년 11월부터 이어진 정기 온라인 벙개와 오프라인 네트워킹 모임 운영",
+    "Korea MCT Summit 2025 발표자 및 운영팀",
+    "Korea MCT Summit 2026 운영팀",
+    "행사 자료, 사진, 발표 기록을 Korea MCT GitHub에 지속적으로 아카이빙",
+  ],
+  links: [
+    { label: "Korea MCT GitHub", url: "https://github.com/koreamct" },
+    { label: "Korea MCT Summit", url: "https://koreamct.github.io/" },
+    { label: "Korea MCT Facebook 그룹", url: "https://www.facebook.com/groups/koreamct" },
+  ],
+};
+
 export const stats = [
   { label: "IT 경험", value: "20년 이상" },
   { label: "Microsoft C# MVP", value: "2005-2019" },
@@ -120,7 +137,7 @@ export const trainingClients = [
 ];
 
 export const communityActivities = [
-  { title: "Korea MCT Summit", description: "Microsoft 인증 교육자 커뮤니티 연례 행사 참석자." },
+  { title: "Korea MCT 커뮤니티", description: "오거나이저로서 정기 온라인·오프라인 모임을 이끌고, Korea MCT Summit 2025·2026 운영팀으로 활동." },
   { title: "MCT Lounge Blog", description: "Microsoft 인증 교육자 커뮤니티를 위한 기술 문서 기고자." },
   { title: "Microsoft AI Tour", description: "Microsoft AI Tour 커뮤니티 이벤트 지원 참석자." },
   { title: "해커톤", description: "해커그라운드 및 DDD Seoul 등 커뮤니티 해커톤 참가자." },

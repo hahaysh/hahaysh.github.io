@@ -33,6 +33,23 @@ What drives me? Seeing teams confidently adopt cloud technologies, watching DevO
 Beyond training, I'm deeply interested in AI and intelligent agents—the future of how we'll build software. I'm also a father, a lifelong learner, and someone who believes that great technology comes from great collaboration across cultures and time zones.`,
 };
 
+export const koreaMctCommunity = {
+  title: "Korea MCT Community",
+  role: "Organizer · Speaker · Community Archive Contributor",
+  description: "As an organizer of Korea MCT, I lead a community where current and former Microsoft Certified Trainers can keep learning and connecting. Since 2024, I have organized regular online meetups and in-person gatherings, while preserving event recaps and presentation materials on GitHub so the community's knowledge remains accessible.",
+  highlights: [
+    "Co-organizing regular online meetups and in-person networking events since November 2024",
+    "Speaker and organizing team member for Korea MCT Summit 2025",
+    "Organizing team member for Korea MCT Summit 2026",
+    "Continuously archiving event materials, photos, and session records on Korea MCT GitHub",
+  ],
+  links: [
+    { label: "Korea MCT GitHub", url: "https://github.com/koreamct" },
+    { label: "Korea MCT Summit", url: "https://koreamct.github.io/" },
+    { label: "Korea MCT Facebook Group", url: "https://www.facebook.com/groups/koreamct" },
+  ],
+};
+
 export const stats = [
   { label: "Years of IT Experience", value: "20+" },
   { label: "Microsoft C# MVP", value: "2005-2019" },
@@ -127,7 +144,7 @@ export const trainingClients = [
 ];
 
 export const communityActivities = [
-  { title: "Korea MCT Summit", description: "Annual participant, Microsoft Certified Trainer community event in Korea." },
+  { title: "Korea MCT Community", description: "Organizer leading regular online and in-person meetups and an organizing team member for the 2025 and 2026 Korea MCT Summits." },
   { title: "MCT Lounge Blog", description: "Contributor of technical articles for the Microsoft Certified Trainer community." },
   { title: "Microsoft AI Tour", description: "Participant supporting Microsoft's AI Tour community events." },
   { title: "Hackathons", description: "Participant in community hackathons including 해커그라운드 and DDD Seoul." },
