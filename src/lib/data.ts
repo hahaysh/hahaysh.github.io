@@ -132,15 +132,15 @@ export const certifications = [
   { title: "Microsoft Certified: Azure Solutions Architect Expert", status: "active", badgeUrl: "/images/badges/azure-solutions-architect.svg", badge: "🏗️" },
   { title: "Microsoft Certified: DevOps Engineer Expert", status: "active", badgeUrl: "/images/badges/devops-engineer.svg", badge: "⚙️" },
   { title: "Microsoft Certified: Azure AI Engineer Associate", status: "active", badgeUrl: "/images/badges/azure-ai-engineer.svg", badge: "🤖" },
+  { title: "Microsoft Certified: Azure Developer Associate", status: "active", badgeUrl: "/images/badges/azure-developer.svg", badge: "💻" },
+  { title: "Microsoft Certified: Azure Administrator Associate", status: "active", badgeUrl: "/images/badges/azure-administrator.svg", badge: "🛠️" },
+  { title: "Microsoft Certified: Azure Security Engineer Associate", status: "active", badgeUrl: "/images/badges/azure-security-engineer.svg", badge: "🔒" },
   { title: "Microsoft Certified: Azure Network Engineer Associate", status: "active", badgeUrl: "/images/badges/azure-network-engineer.svg", badge: "🌐" },
   { title: "Microsoft Certified: Identity and Access Administrator Associate", status: "active", badgeUrl: "/images/badges/identity-access-administrator.svg", badge: "🔐" },
   { title: "Microsoft Certified: Azure AI Fundamentals", status: "active", badgeUrl: "/images/badges/azure-ai-fundamentals.svg", badge: "🧠" },
   { title: "Microsoft Certified: Azure Fundamentals", status: "active", badgeUrl: "/images/badges/azure-fundamentals.svg", badge: "☁️" },
   { title: "GitHub Copilot Certification", status: "active", badge: "🤖" },
   { title: "Microsoft Certified Trainer (MCT)", status: "active", note: "2023-2025", badge: "👨‍🏫" },
-  { title: "Microsoft Certified: Azure Developer Associate", status: "legacy", note: "Expired Oct 28, 2022" },
-  { title: "Microsoft Certified: Azure Administrator Associate", status: "legacy", note: "Expired Oct 28, 2022" },
-  { title: "Microsoft Certified: Azure Security Engineer Associate", status: "legacy", note: "Expired Oct 28, 2022" },
   { title: "Microsoft Certified: Azure Solutions Architect Expert (Legacy)", status: "legacy" },
 ];
 
