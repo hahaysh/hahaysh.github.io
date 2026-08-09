@@ -16,7 +16,16 @@ const projects = (await getCollection('projects')).sort(
     <section class="portfolio-section">
       <div class="container">
         <h1>Portfolio</h1>
-        <p class="intro">Selected DevOps and cloud migration projects delivered as a technical director at (주)디벨로피언스, before joining Microsoft in November 2019. For my current work as a Microsoft Certified Trainer, see the <a href="/training">Training</a> page.</p>
+        <p class="intro">
+          Selected projects spanning two distinct phases of my career:
+          <br/>
+          <strong>Pre-Microsoft (2009-2019):</strong> DevOps and cloud migration projects as Technical Director at (주)디벨로피언스
+          <br/>
+          <strong>Microsoft Era (2019-Present):</strong> Hands-on PoCs and enterprise AI/Copilot adoption programs as Microsoft Certified Trainer
+          <br/>
+          <br/>
+          These experiences reflect my philosophy: moving beyond training slides to hands-on implementation, real business outcomes, and validated architectural patterns.
+        </p>
         
         <div class="projects-grid">
           {projects.map((project) => (
