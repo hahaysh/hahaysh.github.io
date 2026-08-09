@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { certifications } from '../lib/data';
+---
+
+<BaseLayout title="Certifications - SungHo You" description="Microsoft Azure and AI certifications">
+  <Header currentPage="/certifications" />
+  <main>
+    <section class="certs-section">
+      <div class="container">
+        <h1>Certifications</h1>
+        <p class="intro">Continuous learning and certification are core to my professional practice, ensuring I stay current with the latest Azure and AI technologies.</p>
+
+        <div class="cert-grid">
+          {certifications.map((cert) => (
+            <div class="cert-card">
+              <div class="cert-icon">🏆</div>
+              <div class="cert-code">{cert.code}</div>
+              <h3>{cert.title}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .certs-section {
+    padding: 3rem 0;
+  }
+
+  .certs-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .certs-section h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .intro {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 65ch;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .intro {
+      color: #cbd5e1;
+    }
+  }
+
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .cert-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cert-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+  }
+
+  .cert-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cert-card:hover {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .cert-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .cert-code {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #0066cc;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cert-code {
+      color: #60a5fa;
+    }
+  }
+
+  .cert-card h3 {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 0;
+  }
+</style>

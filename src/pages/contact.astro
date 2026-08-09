@@ -1,0 +1,261 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { siteConfig } from '../lib/data';
+---
+
+<BaseLayout title="Contact - SungHo You" description="Get in touch to discuss your project">
+  <Header currentPage="/contact" />
+  <main>
+    <section class="contact-section">
+      <div class="container">
+        <h1>Let's Connect</h1>
+        <p class="intro">I'm always interested in discussing new projects, collaboration opportunities, and how I can help drive your digital transformation.</p>
+        
+        <div class="contact-content">
+          <div class="contact-methods">
+            <div class="method">
+              <div class="icon">✉️</div>
+              <h3>Email</h3>
+              <p>For inquiries about projects or consulting:</p>
+              <a href={`mailto:${siteConfig.email}`} class="contact-link">{siteConfig.email}</a>
+            </div>
+
+            <div class="method">
+              <div class="icon">💼</div>
+              <h3>LinkedIn</h3>
+              <p>Connect with me on LinkedIn to follow my latest insights and projects:</p>
+              <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" class="contact-link">
+                LinkedIn Profile →
+              </a>
+            </div>
+
+            <div class="method">
+              <div class="icon">💻</div>
+              <h3>GitHub</h3>
+              <p>Explore my open source projects and contributions:</p>
+              <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" class="contact-link">
+                GitHub Profile →
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-info">
+            <h2>Quick Facts</h2>
+            <ul>
+              <li>Based in Seoul, Korea</li>
+              <li>20+ years of technology experience</li>
+              <li>Available for consulting and strategic advisory</li>
+              <li>Expertise in Azure cloud and AI solutions</li>
+              <li>Microsoft Certified Trainer (MCT)</li>
+              <li>Azure MVP</li>
+            </ul>
+
+            <h2>How I Can Help</h2>
+            <ul>
+              <li><strong>Strategic Consulting:</strong> Guiding organizations through cloud transformation</li>
+              <li><strong>Solution Architecture:</strong> Designing scalable and secure Azure solutions</li>
+              <li><strong>DevOps Implementation:</strong> Building automated deployment pipelines</li>
+              <li><strong>AI Integration:</strong> Leveraging AI and LLMs for business solutions</li>
+              <li><strong>Technical Training:</strong> Delivering comprehensive team training programs</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="response-time">
+          <p>📧 I typically respond to emails within 1-2 business days.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .contact-section {
+    padding: 3rem 0;
+  }
+
+  .contact-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .contact-section h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .intro {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 65ch;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .intro {
+      color: #cbd5e1;
+    }
+  }
+
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 968px) {
+    .contact-content {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .method {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 2rem;
+    transition: all 0.3s;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .method {
+      background: #1e293b;
+      border-color: #334155;
+    }
+  }
+
+  .method:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .method:hover {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .method h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .method p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .method p {
+      color: #cbd5e1;
+    }
+  }
+
+  .contact-link {
+    display: inline-block;
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .contact-link {
+      color: #60a5fa;
+    }
+  }
+
+  .contact-link:hover {
+    text-decoration: underline;
+  }
+
+  .contact-info {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 2rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .contact-info {
+      background: #1e293b;
+      border-color: #334155;
+    }
+  }
+
+  .contact-info h2 {
+    font-size: 1.25rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .contact-info h2:not(:first-child) {
+    margin-top: 2rem;
+  }
+
+  .contact-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .contact-info li {
+    padding: 0.5rem 0;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .contact-info li {
+      color: #cbd5e1;
+    }
+  }
+
+  .contact-info strong {
+    color: #1f2937;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .contact-info strong {
+      color: #e2e8f0;
+    }
+  }
+
+  .response-time {
+    text-align: center;
+    padding: 2rem;
+    background: #f0f9ff;
+    border-left: 4px solid #0066cc;
+    border-radius: 6px;
+    color: #1e3a8a;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .response-time {
+      background: #1e293b;
+      border-left-color: #3b82f6;
+      color: #cbd5e1;
+    }
+  }
+
+  .response-time p {
+    margin: 0;
+    font-weight: 500;
+  }
+</style>

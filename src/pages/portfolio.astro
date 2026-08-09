@@ -1,0 +1,81 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => b.data.year - a.data.year
+);
+---
+
+<BaseLayout title="Portfolio - SungHo You" description="Browse my project portfolio and case studies">
+  <Header currentPage="/portfolio" />
+  <main>
+    <section class="portfolio-section">
+      <div class="container">
+        <h1>Portfolio</h1>
+        <p class="intro">A selection of projects where I've driven digital transformation through cloud architecture, AI innovation, and operational excellence.</p>
+        
+        <div class="projects-grid">
+          {projects.map((project) => (
+            <ProjectCard
+              title={project.data.title}
+              description={project.data.description}
+              year={project.data.year}
+              client={project.data.client}
+              technologies={project.data.technologies}
+              achievements={project.data.achievements}
+              slug={project.id}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .portfolio-section {
+    padding: 3rem 0;
+  }
+
+  .portfolio-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .portfolio-section h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .intro {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 65ch;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .intro {
+      color: #cbd5e1;
+    }
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

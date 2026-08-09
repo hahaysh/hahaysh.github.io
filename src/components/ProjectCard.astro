@@ -1,0 +1,205 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  year: number;
+  client: string;
+  technologies: string[];
+  achievements: string[];
+  slug: string;
+}
+
+const { title, description, year, client, technologies, achievements, slug } = Astro.props;
+---
+
+<article class="project-card">
+  <h3>{title}</h3>
+  <div class="meta">
+    <span class="year">{year}</span>
+    <span class="separator">•</span>
+    <span class="client">{client}</span>
+  </div>
+  <p class="description">{description}</p>
+  
+  <div class="tech-stack">
+    <span class="label">📊 Technology Stack:</span>
+    <div class="tags">
+      {technologies.map((tech) => (
+        <span class="tag">{tech}</span>
+      ))}
+    </div>
+  </div>
+
+  <div class="achievements">
+    {achievements.map((achievement) => (
+      <div class="achievement">
+        <span class="checkmark">✓</span>
+        <span>{achievement}</span>
+      </div>
+    ))}
+  </div>
+
+  <a href={`/portfolio/${slug}`} class="read-more">
+    Read More →
+  </a>
+</article>
+
+<style>
+  .project-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    background: #fff;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .project-card {
+      border-color: #334155;
+      background: #1e293b;
+    }
+  }
+
+  .project-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .project-card:hover {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .project-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .project-card h3 {
+      color: #e2e8f0;
+    }
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .meta {
+      color: #94a3b8;
+    }
+  }
+
+  .year {
+    font-weight: 500;
+  }
+
+  .separator {
+    opacity: 0.5;
+  }
+
+  .description {
+    color: #666;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .description {
+      color: #cbd5e1;
+    }
+  }
+
+  .tech-stack {
+    margin-bottom: 1.25rem;
+  }
+
+  .label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .label {
+      color: #e2e8f0;
+    }
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    display: inline-block;
+    background: #f3f4f6;
+    color: #374151;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .tag {
+      background: #334155;
+      color: #cbd5e1;
+    }
+  }
+
+  .achievements {
+    margin-bottom: 1.25rem;
+  }
+
+  .achievement {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #444;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .achievement {
+      color: #cbd5e1;
+    }
+  }
+
+  .checkmark {
+    color: #22c55e;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .read-more {
+    display: inline-block;
+    color: #0066cc;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .read-more {
+      color: #60a5fa;
+    }
+  }
+
+  .read-more:hover {
+    text-decoration: none;
+    margin-left: 0.5rem;
+  }
+</style>

@@ -1,0 +1,130 @@
+---
+import { siteConfig } from '../lib/data';
+
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = '' } = Astro.props;
+
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Expertise', href: '/expertise' },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Certifications', href: '/certifications' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<header class="header">
+  <div class="container">
+    <div class="header-content">
+      <a href="/" class="logo">
+        <h1>{siteConfig.name}</h1>
+      </a>
+      <nav class="nav">
+        <ul>
+          {navItems.map((item) => (
+            <li>
+              <a href={item.href} class={currentPage === item.href ? 'active' : ''}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .header {
+      border-bottom-color: #334155;
+      background: rgba(15, 23, 42, 0.95);
+    }
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+  }
+
+  .logo h1 {
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  .logo:hover {
+    text-decoration: none;
+  }
+
+  .nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+  }
+
+  .nav a {
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  .nav a:hover {
+    text-decoration: none;
+    color: #0066cc;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .nav a:hover {
+      color: #60a5fa;
+    }
+  }
+
+  .nav a.active {
+    color: #0066cc;
+    border-bottom: 2px solid #0066cc;
+    padding-bottom: 0.25rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .nav a.active {
+      color: #60a5fa;
+      border-bottom-color: #60a5fa;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .nav ul {
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+  }
+</style>

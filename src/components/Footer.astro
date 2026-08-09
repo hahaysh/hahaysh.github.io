@@ -1,0 +1,96 @@
+---
+import { siteConfig } from '../lib/data';
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+      </div>
+      <div class="footer-section">
+        <h3>Social</h3>
+        <div class="social-links">
+          <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Built with</h3>
+        <p>Astro • TypeScript • GitHub Pages</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid #e5e7eb;
+    background: #f9fafb;
+    padding: 3rem 0 1rem;
+    margin-top: 4rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .footer {
+      border-top-color: #334155;
+      background: #1e293b;
+    }
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-section h3 {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    color: #666;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .footer-section h3 {
+      color: #94a3b8;
+    }
+  }
+
+  .footer-section a {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .footer-section p {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    font-size: 0.875rem;
+    color: #666;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .footer-bottom {
+      border-top-color: #334155;
+      color: #94a3b8;
+    }
+  }
+</style>

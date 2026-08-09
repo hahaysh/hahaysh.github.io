@@ -1,0 +1,232 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { expertise as expertiseConfig } from '../lib/data';
+
+const expertiseCollection = await getCollection('expertise');
+---
+
+<BaseLayout title="Expertise - SungHo You" description="Cloud Architecture, DevOps, AI Agents, and Technical Training">
+  <Header currentPage="/expertise" />
+  <main>
+    <section class="expertise-section">
+      <div class="container">
+        <h1>Expertise</h1>
+        <p class="intro">I bring deep technical expertise across four core areas, developed through years of enterprise transformation initiatives.</p>
+        
+        <div class="expertise-grid">
+          {expertiseConfig.map((item) => {
+            const content = expertiseCollection.find(c => c.id === item.id);
+            return (
+              <div class="expertise-card">
+                <div class="icon">{item.icon}</div>
+                <h2>{item.title}</h2>
+                <p class="description">{item.description}</p>
+                {content && (
+                  <div class="skills">
+                    {content.data.skills.map((skill) => (
+                      <span class="skill-badge">{skill}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <section class="details-section">
+      <div class="container">
+        <h2>Deep Dive</h2>
+        <div class="expertise-details">
+          {expertiseCollection.map((item) => (
+            <div class="detail-item">
+              <h3>{item.data.title}</h3>
+              <p class="detail-description">{item.data.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .expertise-section {
+    padding: 3rem 0;
+  }
+
+  .expertise-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .expertise-section h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .intro {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 65ch;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .intro {
+      color: #cbd5e1;
+    }
+  }
+
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  @media (max-width: 768px) {
+    .expertise-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .expertise-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .expertise-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+  }
+
+  .expertise-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .expertise-card:hover {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .expertise-card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .description {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .description {
+      color: #cbd5e1;
+    }
+  }
+
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .skill-badge {
+    display: inline-block;
+    background: white;
+    border: 1px solid #e5e7eb;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #666;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .skill-badge {
+      background: #334155;
+      border-color: #475569;
+      color: #cbd5e1;
+    }
+  }
+
+  .details-section {
+    padding: 3rem 0;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .details-section {
+      border-top-color: #334155;
+    }
+  }
+
+  .details-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .expertise-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .detail-item h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #1f2937;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .detail-item h3 {
+      color: #e2e8f0;
+    }
+  }
+
+  .detail-content {
+    color: #666;
+    line-height: 1.8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .detail-content {
+      color: #cbd5e1;
+    }
+  }
+
+  .detail-description {
+    color: #666;
+    line-height: 1.8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .detail-description {
+      color: #cbd5e1;
+    }
+  }
+</style>
