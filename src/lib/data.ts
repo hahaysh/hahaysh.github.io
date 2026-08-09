@@ -12,9 +12,17 @@ export const siteConfig = {
 
 export const bio = {
   short: "Microsoft Certified Trainer | Former Cloud/DevOps Consultant | 15-Year Microsoft MVP (2005-2019)",
-  long: `저는 Microsoft 입사(2019년 11월) 이전에는 (주)디벨로피언스 기술이사로서 삼성, OB맥주, 미즈호은행, 현대중공업 등 다수 기업의 DevOps/클라우드 프로젝트를 수행했고, 2005년부터 2019년까지 15년 연속 Microsoft C# MVP로 활동했습니다.
+  long: `I am a Microsoft Certified Trainer and cloud architect with 20+ years of enterprise IT experience across software development, enterprise systems, DevOps transformation, and technical education.
 
-2019년 11월 Microsoft에 입사한 이후에는 Microsoft Certified Trainer(MCT)로서 Azure, AI 분야의 공식 커리큘럼을 기업 고객 대상으로 강의해 왔으며, 2020년부터 현재까지 272회 이상의 기술 교육을 진행하고 있습니다.`,
+**Career Foundation (2004-2009):** Started as a software engineer during the .NET platform emergence, leading enterprise systems architecture for Fortune 500 companies including Samsung, Lotte Group, Hyundai Heavy Industries, and news organizations. Designed and delivered large-scale systems serving 1M+ daily users across finance, retail, automotive, and media sectors.
+
+**Technical Leadership & MVP Recognition (2005-2019):** Earned 15 consecutive years as a Microsoft C# MVP while building enterprise cloud and DevOps consulting practices. Delivered transformational projects including Samsung's large-scale CI/CD pipeline modernization, mobile commerce platforms for Lotte Cinema, and IoT-based home automation solutions.
+
+**Cloud & DevOps Consulting Era:** As CTO of Developience, led enterprise DevOps transformation for global financial and manufacturing organizations, designing Azure-based CI/CD pipelines that accelerated deployment cycles by 60%, while pioneering remote infrastructure monitoring solutions.
+
+**Current Focus - Technical Training (2019-Present):** Joined Microsoft as MCT in November 2019. Transitioned expertise into enterprise technical education, delivering official Microsoft curriculum on Azure, AI, DevOps, and GitHub technologies. Delivered 272+ training sessions to enterprise teams through August 2026, specializing in Azure Administration, Development, DevOps Engineering, AI Engineering, and Microsoft 365 Copilot adoption.
+
+**Key Strengths:** Enterprise cloud architecture · DevOps & CI/CD pipeline design · .NET and modern cloud platform expertise · AI and agent-based solution design · Technical training delivery · Cross-cultural enterprise consulting (US, EU, Japan, Korea).`,
 };
 
 export const stats = [
