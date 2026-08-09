@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { siteConfig, bio, stats, certifications } from '../lib/data';
+import { siteConfig, bio, stats, certifications, awards, publications, startupExperience, startupProducts } from '../lib/data';
 ---
 
 <BaseLayout title="About - SungHo You" description="Learn more about my background and experience">
@@ -15,13 +15,21 @@ import { siteConfig, bio, stats, certifications } from '../lib/data';
           <div class="about-text">
             <h2>Professional Journey</h2>
             <p>{bio.long}</p>
-            
+
+            <h2>Career Timeline</h2>
+            <ul class="focus-areas">
+              <li><strong>2005–2019:</strong> Microsoft C# MVP (15 consecutive years) while working as a cloud/DevOps consultant</li>
+              <li><strong>Before Microsoft:</strong> Cloud/DevOps consulting projects across enterprise clients (see <a href="/portfolio">Portfolio</a>)</li>
+              <li><strong>November 2019:</strong> Joined Microsoft as a Microsoft Certified Trainer (MCT)</li>
+              <li><strong>2019–Present:</strong> Delivering Azure and AI training to enterprise teams, 272+ sessions through August 2026 (see <a href="/training">Training</a>)</li>
+            </ul>
+
             <h2>Core Focus Areas</h2>
             <ul class="focus-areas">
-              <li><strong>Cloud Architecture:</strong> Designing scalable, secure Azure infrastructure for enterprise transformation</li>
-              <li><strong>DevOps & Automation:</strong> Building CI/CD pipelines and infrastructure-as-code solutions that accelerate time-to-value</li>
-              <li><strong>AI & Intelligent Agents:</strong> Leveraging AI models and LLMs to create intelligent solutions</li>
-              <li><strong>Technical Training:</strong> Educating teams through hands-on labs and comprehensive curriculum development</li>
+              <li><strong>Azure Training:</strong> Delivering official Microsoft curriculum on Azure administration, development, DevOps, security, and networking</li>
+              <li><strong>AI Engineering Training:</strong> Teaching Azure AI Engineer curriculum, including generative AI and agent development</li>
+              <li><strong>GitHub & Copilot:</strong> Training teams on GitHub foundations and Microsoft 365 Copilot adoption</li>
+              <li><strong>Cloud & DevOps Consulting:</strong> Prior experience designing cloud infrastructure and CI/CD pipelines</li>
             </ul>
 
             <h2>By The Numbers</h2>
@@ -48,18 +56,96 @@ import { siteConfig, bio, stats, certifications } from '../lib/data';
       </div>
     </section>
 
-    <section class="certifications-section">
+    <section class="startup-section">
       <div class="container">
-        <h2>Certifications & Credentials</h2>
-        <div class="cert-grid">
-          {certifications.map((cert) => (
-            <div class="cert-card">
-              <div class="cert-icon">🏆</div>
-              <h3>{cert.title}</h3>
-              <p class="cert-issuer">{cert.code}</p>
+        <h2>Startup & Enterprise Experience</h2>
+        <p class="intro-text">Before joining Microsoft as a Certified Trainer in 2019, I led technical organizations at multiple startups, delivering enterprise-grade solutions for Fortune 500 companies across finance, retail, automotive, and media sectors.</p>
+        
+        {startupExperience.map((startup) => (
+          <div class="startup-card">
+            <div class="startup-header">
+              <h3>{startup.company}</h3>
+              <div class="startup-meta">
+                <span class="position">{startup.position}</span>
+                <span class="period">{startup.period}</span>
+              </div>
+            </div>
+            <p class="startup-description">{startup.description}</p>
+            
+            {startup.keyProjects && startup.keyProjects.length > 0 && (
+              <div class="projects">
+                <h4>Key Projects</h4>
+                <ul>
+                  {startup.keyProjects.map((project) => (
+                    <li>
+                      <strong>{project.title}</strong>
+                      {project.description && <p>{project.description}</p>}
+                      {project.impact && <p class="impact">💡 {project.impact}</p>}
+                      {project.patent && <p class="patent">🏆 특허: {project.patent}</p>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            
+            {startup.achievements && startup.achievements.length > 0 && (
+              <div class="achievements">
+                <h4>Key Achievements</h4>
+                <ul>
+                  {startup.achievements.map((achievement) => (
+                    <li>{achievement}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        ))}
+
+        <h2>Products & Services</h2>
+        <p class="intro-text">Core products developed during startup years that served enterprise customers:</p>
+        
+        <div class="products-grid">
+          {startupProducts.map((product) => (
+            <div class="product-card">
+              <h3>{product.name}</h3>
+              <p class="subtitle">{product.subtitle}</p>
+              <div class="meta">
+                <span class="period">{product.period}</span>
+                <span class="company">{product.company}</span>
+              </div>
+              <p class="description">{product.description}</p>
+              <div class="technologies">
+                {product.technologies.map((tech) => (
+                  <span class="tech-tag">{tech}</span>
+                ))}
+              </div>
             </div>
           ))}
         </div>
+      </div>
+    </section>
+
+    <section class="certifications-section">
+      <div class="container">
+        <h2>Certifications & Credentials</h2>
+        <p class="note">{certifications.length} Microsoft certifications (active and legacy). See the full list on the <a href="/certifications">Certifications</a> page.</p>
+
+        <h2>Awards & Recognition</h2>
+        <div class="awards-list">
+          {awards.map((award) => (
+            <div class="award-item">
+              <span class="award-title">{award.title}</span>
+              <span class="award-period">{award.period}</span>
+            </div>
+          ))}
+        </div>
+
+        <h2>Publications</h2>
+        <ul class="focus-areas">
+          {publications.map((pub) => (
+            <li>{pub.title} ({pub.year}, {pub.publisher})</li>
+          ))}
+        </ul>
       </div>
     </section>
   </main>
@@ -311,6 +397,54 @@ import { siteConfig, bio, stats, certifications } from '../lib/data';
     margin-bottom: 2rem;
   }
 
+  .note {
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .note {
+      color: #94a3b8;
+    }
+  }
+
+  .awards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .award-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: #f9fafb;
+    border-radius: 6px;
+    flex-wrap: wrap;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .award-item {
+      background: #1e293b;
+    }
+  }
+
+  .award-title {
+    font-weight: 600;
+  }
+
+  .award-period {
+    color: #666;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .award-period {
+      color: #94a3b8;
+    }
+  }
+
   .cert-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -371,5 +505,284 @@ import { siteConfig, bio, stats, certifications } from '../lib/data';
 
   .verify-link:hover {
     text-decoration: underline;
+  }
+
+  /* Startup Experience Styles */
+  .startup-section {
+    padding: 3rem 0;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-section {
+      border-top-color: #334155;
+    }
+  }
+
+  .startup-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .intro-text {
+    color: #666;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .intro-text {
+      color: #cbd5e1;
+    }
+  }
+
+  .startup-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+  }
+
+  .startup-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .startup-card h3 {
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .startup-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .startup-meta .position {
+    font-weight: 600;
+    color: #0066cc;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-meta .position {
+      color: #60a5fa;
+    }
+  }
+
+  .startup-meta .period {
+    color: #666;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-meta .period {
+      color: #94a3b8;
+    }
+  }
+
+  .startup-description {
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-description {
+      color: #cbd5e1;
+    }
+  }
+
+  .startup-card .projects,
+  .startup-card .achievements {
+    margin-top: 1.5rem;
+  }
+
+  .startup-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .startup-card .projects ul,
+  .startup-card .achievements ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .startup-card .projects li {
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    background: white;
+    border-left: 4px solid #0066cc;
+    border-radius: 4px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-card .projects li {
+      background: #0f172a;
+      border-left-color: #3b82f6;
+    }
+  }
+
+  .startup-card .projects li strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-card .projects li strong {
+      color: #e2e8f0;
+    }
+  }
+
+  .startup-card .projects li p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    color: #666;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-card .projects li p {
+      color: #cbd5e1;
+    }
+  }
+
+  .startup-card .projects li .impact,
+  .startup-card .projects li .patent {
+    font-weight: 500;
+    margin-top: 0.5rem;
+  }
+
+  .startup-card .achievements li {
+    padding: 0.75rem 0 0.75rem 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #666;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-card .achievements li {
+      color: #cbd5e1;
+    }
+  }
+
+  .startup-card .achievements li:before {
+    content: "✓ ";
+    color: #0066cc;
+    font-weight: bold;
+    margin-left: -1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-card .achievements li:before {
+      color: #60a5fa;
+    }
+  }
+
+  /* Products Grid */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .product-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .product-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+  }
+
+  .product-card h3 {
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .product-card .subtitle {
+    color: #666;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .product-card .subtitle {
+      color: #94a3b8;
+    }
+  }
+
+  .product-card .meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .product-card .period,
+  .product-card .company {
+    padding: 0.25rem 0.75rem;
+    background: white;
+    border-radius: 4px;
+    color: #666;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .product-card .period,
+    .product-card .company {
+      background: #0f172a;
+      color: #cbd5e1;
+    }
+  }
+
+  .product-card .description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .product-card .description {
+      color: #cbd5e1;
+    }
+  }
+
+  .technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #0066cc;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .tech-tag {
+      background: #3b82f6;
+    }
   }
 </style>

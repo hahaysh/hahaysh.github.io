@@ -1,43 +1,48 @@
 ---
 title: "Samsung S1 DevOps CI/CD Pipeline"
-description: "Enterprise-scale CI/CD pipeline architecture for Samsung S1 platform using Azure DevOps"
+description: "Enterprise-scale CI/CD pipeline design for Samsung S1's IoT/cloud service development"
 year: 2019
-client: "Samsung"
-teamSize: "100+"
+client: "Samsung (S1)"
+teamSize: "100+ (10 teams)"
 technologies:
-  - Azure DevOps
-  - Docker
-  - Kubernetes
+  - Azure DevOps (Pipelines, Repos, Artifacts, Test Plans)
   - ARM Template
+  - Azure Kubernetes Service (AKS)
+  - Docker
+  - Jenkins
   - GitHub Actions
+  - Azure Key Vault
+  - Azure Monitor / Application Insights
 achievements:
-  - "Reduced deployment time by 70%"
-  - "Decreased operational costs by 30%"
-  - "Achieved 90% security compliance"
+  - "Reduced deployment time from about 2 weeks to 3 days"
+  - "Reduced deployment failure rate by roughly 30% through infrastructure-as-code automation"
+  - "Maintained 90%+ compliance on Azure Security Center checks"
 featured: true
 ---
 
 ## Project Overview
 
-Designed and implemented a comprehensive DevOps CI/CD pipeline for Samsung S1 platform, enabling rapid and reliable deployments across multiple environments. The solution automated the entire software delivery process from code commit to production deployment.
+Designed and built a DevOps CI/CD environment for Samsung S1's IoT and cloud-based service development, moving from an on-premises, manual deployment process to an automated Azure-based pipeline. Served as the architect responsible for the Azure DevOps and CI/CD pipeline design within a ~100-person, 10-team engagement.
 
 ## Key Contributions
 
-- Architected multi-stage deployment pipeline with automated testing and quality gates
-- Implemented infrastructure-as-code using ARM Templates for reproducible deployments
-- Established containerization strategy using Docker for consistent application delivery
-- Configured Kubernetes orchestration for scalable microservices deployment
-- Established security scanning and compliance checks in the pipeline
+- Designed and built CI/CD pipelines using Azure Pipelines, Repos, Artifacts, and Test Plans
+- Applied infrastructure-as-code using ARM Templates for repeatable environment provisioning
+- Introduced Azure Kubernetes Service (AKS) for container orchestration
+- Applied Azure Key Vault and Azure Policy for security hardening
+- Set up monitoring and logging with Azure Monitor, Application Insights, and Log Analytics
+- Introduced DevSecOps practices, integrating security and compliance checks into the CI/CD pipeline
 
 ## Technical Stack
 
-- **CI/CD Platform**: Azure DevOps Pipelines
+- **CI/CD Platform**: Azure DevOps Pipelines, Repos, Artifacts, Test Plans
 - **Containerization**: Docker
 - **Orchestration**: Azure Kubernetes Service (AKS)
-- **Infrastructure**: ARM Templates, Bicep
-- **Source Control**: Git/GitHub
-- **Monitoring**: Azure Monitor
+- **Infrastructure**: ARM Templates
+- **Source Control**: Git, GitHub Actions
+- **Monitoring**: Azure Monitor, Application Insights, Log Analytics
+- **Languages**: Java (Eclipse)
 
 ## Impact
 
-The pipeline reduced deployment time from hours to minutes, enabling the team to deliver updates multiple times per day while maintaining high security standards.
+Deployment time dropped from roughly two weeks to about three days, deployment failure rates fell by about 30%, and the team maintained 90%+ compliance on Azure Security Center checks throughout the engagement.

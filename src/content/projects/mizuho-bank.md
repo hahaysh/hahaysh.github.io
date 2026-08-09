@@ -1,42 +1,37 @@
 ---
-title: "Mizuho Bank AI-Powered Risk Analytics"
-description: "Enterprise AI solution for financial risk assessment and fraud detection"
-year: 2021
-client: "Mizuho Bank"
-teamSize: "80+"
+title: "Mizuho Bank DevOps Migration"
+description: "TFS upgrade and on-premises-to-Azure DevOps migration for Mizuho Bank Korea"
+year: 2019
+client: "Mizuho Bank (Korea)"
+teamSize: "Not disclosed"
 technologies:
-  - Azure Machine Learning
-  - Python
-  - Apache Spark
-  - Azure Synapse Analytics
-  - Power BI
+  - Team Foundation Server (TFS)
+  - Azure DevOps (Team Services)
+  - Visual Studio
+  - C#
 achievements:
-  - "Detected 95% of fraudulent transactions"
-  - "Reduced risk assessment time by 60%"
-  - "Improved model accuracy to 98%"
+  - "Upgraded and migrated Mizuho Bank Korea's legacy TFS to align with the Japan headquarters' latest version"
+  - "Migrated the DevOps environment from on-premises to Azure"
+  - "Reduced deployment error rate by roughly 40% via automated code validation and vulnerability analysis"
 featured: true
 ---
 
 ## Project Overview
 
-Developed an enterprise-grade AI solution for Mizuho Bank to detect financial fraud and assess credit risk using machine learning models trained on historical transaction data.
+Led the migration of Mizuho Bank Korea's legacy Team Foundation Server (TFS) environment to align with the Japan headquarters' latest DevOps platform, then migrated the environment from on-premises infrastructure to Azure.
 
 ## Key Contributions
 
-- Built machine learning pipeline using Azure ML for model development and training
-- Implemented feature engineering for risk indicators from financial data
-- Deployed real-time inference models for transaction scoring
-- Created monitoring dashboards for model performance and data drift
-- Established MLOps practices for model lifecycle management
+- Upgraded the local TFS instance to match the Japan HQ's current version
+- Migrated the DevOps toolchain from on-premises to Azure DevOps (Team Services)
+- Introduced automated code validation and vulnerability analysis for security compliance
+- Reduced deployment error rates through pipeline automation
 
 ## Technical Stack
 
-- **ML Platform**: Azure Machine Learning
-- **Big Data**: Azure Synapse Analytics, Apache Spark
-- **Languages**: Python, SQL
-- **Deployment**: Azure Container Registry, Azure Container Instances
-- **Monitoring**: Application Insights
+- **DevOps Platform**: Team Foundation Server (TFS), Azure DevOps (Team Services)
+- **Development**: Visual Studio, C#
 
 ## Impact
 
-The solution enabled the bank to detect and prevent fraudulent transactions in real-time while reducing false positives.
+The migration aligned the Korea branch's DevOps environment with global standards, moved operations to Azure, and reduced deployment error rates by roughly 40% through automated validation and vulnerability scanning.

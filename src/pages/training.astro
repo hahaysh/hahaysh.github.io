@@ -1,0 +1,325 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { trainingTracks, trainingClients, communityActivities, trainingByYear } from '../lib/data';
+---
+
+<BaseLayout title="Microsoft Training - SungHo You" description="Microsoft Certified Trainer delivering Azure, AI, GitHub, and Copilot training since 2019">
+  <Header currentPage="/training" />
+  <main>
+    <section class="training-section">
+      <div class="container">
+        <h1>Microsoft Training</h1>
+        <p class="intro">As a Microsoft Certified Trainer (MCT) since November 2019, I've delivered 272+ training sessions (2020–present) to enterprise teams across Azure and AI curricula.</p>
+
+        <div class="year-grid">
+          {trainingByYear.map((yr) => (
+            <div class="year-card">
+              <div class="year-num">{yr.year}{yr.inProgress ? ' (in progress)' : ''}</div>
+              <div class="year-sessions">{yr.sessions} sessions</div>
+              <div class="year-courses">{yr.courses.join(', ')}</div>
+            </div>
+          ))}
+        </div>
+
+        <div class="tracks-grid">
+          {trainingTracks.map((track) => (
+            <div class="track-card">
+              <div class="icon">{track.icon}</div>
+              <h2>{track.title}</h2>
+              <p class="description">{track.description}</p>
+              <div class="exam-codes">
+                {track.examCodes.map((code) => (
+                  <span class="exam-tag">{code}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="clients-section">
+      <div class="container">
+        <h2>Enterprise Clients Trained</h2>
+        <p class="note">Since joining Microsoft, training delivered to teams at:</p>
+        <div class="clients-grid">
+          {trainingClients.map((client) => (
+            <span class="client-badge">{client}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="community-section">
+      <div class="container">
+        <h2>Community Involvement</h2>
+        <div class="community-grid">
+          {communityActivities.map((activity) => (
+            <div class="community-card">
+              <h3>{activity.title}</h3>
+              <p>{activity.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .training-section {
+    padding: 3rem 0;
+  }
+
+  .training-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .training-section h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .intro {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 65ch;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .intro {
+      color: #cbd5e1;
+    }
+  }
+
+  .year-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .year-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1.25rem;
+    text-align: center;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .year-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+  }
+
+  .year-num {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .year-sessions {
+    color: #0066cc;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .year-sessions {
+      color: #60a5fa;
+    }
+  }
+
+  .year-courses {
+    font-size: 0.75rem;
+    color: #666;
+    line-height: 1.5;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .year-courses {
+      color: #94a3b8;
+    }
+  }
+
+  .tracks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .track-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 2rem;
+    transition: all 0.3s;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .track-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+  }
+
+  .track-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .track-card:hover {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .track-card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .description {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .description {
+      color: #cbd5e1;
+    }
+  }
+
+  .exam-codes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .exam-tag {
+    display: inline-block;
+    background: white;
+    border: 1px solid #e5e7eb;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #0066cc;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .exam-tag {
+      background: #334155;
+      border-color: #475569;
+      color: #60a5fa;
+    }
+  }
+
+  .clients-section,
+  .community-section {
+    padding: 3rem 0;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .clients-section,
+    .community-section {
+      border-top-color: #334155;
+    }
+  }
+
+  .clients-section h2,
+  .community-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .note {
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .note {
+      color: #cbd5e1;
+    }
+  }
+
+  .clients-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .client-badge {
+    display: inline-block;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    padding: 0.5rem 1.25rem;
+    border-radius: 999px;
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .client-badge {
+      background: #1e293b;
+      border-color: #334155;
+      color: #e2e8f0;
+    }
+  }
+
+  .community-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .community-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .community-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+  }
+
+  .community-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .community-card p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .community-card p {
+      color: #cbd5e1;
+    }
+  }
+</style>
