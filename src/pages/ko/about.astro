@@ -1,0 +1,580 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import * as dataKo from '../../lib/data.ko';
+
+const { siteConfig, bio, stats, certifications, awards, publications, startupExperience, startupProducts } = dataKo;
+---
+
+<BaseLayout title="소개 - 유성호" description="내 배경과 경험에 대해 자세히 알아보기">
+  <Header currentPage="/ko/about" lang="ko" />
+  <main>
+    <section class="about-hero">
+      <div class="container">
+        <h1>소개</h1>
+        <div class="about-content">
+          <div class="about-text">
+            <p class="intro-bio">{bio.long}</p>
+
+            <h2>나의 관심사</h2>
+            <ul class="focus-areas">
+              <li><strong>Azure 클라우드 플랫폼:</strong> 인프라에서 서버리스 솔루션까지, 확장 가능한 시스템 설계를 좋아합니다.</li>
+              <li><strong>DevOps 및 디지털 변환:</strong> 현대적인 관행을 통해 조직이 더 빠르고 나은 소프트웨어를 배포하도록 돕습니다.</li>
+              <li><strong>AI 및 지능형 에이전트:</strong> AI가 소프트웨어 개발과 문제 해결 방식을 어떻게 변화시킬지 탐구합니다.</li>
+              <li><strong>교육 및 멘토링:</strong> 교육 중에 무언가가 누군가의 마음에 클릭되는 순간만큼 좋은 것은 없습니다.</li>
+              <li><strong>엔터프라이즈 아키텍처:</strong> 세계 시장에서 수백만 사용자를 서빙하는 신뢰할 수 있는 시스템 구축합니다.</li>
+              <li><strong>GitHub 및 개발자 도구:</strong> 현대적인 도구와 관행으로 개발자들의 삶을 더 쉽게 만듭니다.</li>
+            </ul>
+
+            <h2>통계</h2>
+            <div class="stats-display">
+              {stats.map((stat) => (
+                <div class="stat">
+                  <div class="stat-num">{stat.value}</div>
+                  <div class="stat-desc">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <aside class="about-sidebar">
+            <img src="/images/profile/sungo-you.jpg" alt={siteConfig.name} class="profile-image" />
+            <div class="contact-card">
+              <h3>연락하기</h3>
+              <p>클라우드 아키텍처, AI 솔루션 또는 교육 이니셔티브에 대해 논의하고 싶으신가요?</p>
+              <a href={`mailto:${siteConfig.email}`} class="btn">이메일 보내기</a>
+              <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="startup-section">
+      <div class="container">
+        <h2>스타트업 및 엔터프라이즈 경험</h2>
+        <p class="intro-text">2019년 Microsoft 인증 트레이너로 입사하기 전에 여러 스타트업에서 기술 조직을 이끌었으며, Fortune 500대 기업들에 금융, 소매, 자동차, 미디어 부문에서 엔터프라이즈급 솔루션을 제공했습니다.</p>
+        
+        {startupExperience.map((startup) => (
+          <div class="startup-card">
+            <div class="startup-header">
+              <h3>{startup.company}</h3>
+              <div class="startup-meta">
+                <span class="position">{startup.position}</span>
+                <span class="period">{startup.period}</span>
+              </div>
+            </div>
+            <p class="startup-description">{startup.description}</p>
+            
+            {startup.keyProjects && startup.keyProjects.length > 0 && (
+              <div class="projects">
+                <h4>주요 프로젝트</h4>
+                <ul>
+                  {startup.keyProjects.map((project) => (
+                    <li>
+                      <strong>{project.title}</strong>
+                      {project.description && <p>{project.description}</p>}
+                      {project.impact && <p class="impact">💡 {project.impact}</p>}
+                      {project.patent && <p class="patent">🏆 특허: {project.patent}</p>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            
+            {startup.achievements && startup.achievements.length > 0 && (
+              <div class="achievements">
+                <h4>주요 성과</h4>
+                <ul>
+                  {startup.achievements.map((achievement) => (
+                    <li>{achievement}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        ))}
+
+        <h2>제품 및 서비스</h2>
+        <p class="intro-text">스타트업 시절에 개발되어 엔터프라이즈 고객을 서빙한 핵심 제품:</p>
+        
+        <div class="products-grid">
+          {startupProducts.map((product) => (
+            <div class="product-card">
+              <h3>{product.name}</h3>
+              <p class="subtitle">{product.subtitle}</p>
+              <div class="meta">
+                <span class="period">{product.period}</span>
+                <span class="company">{product.company}</span>
+              </div>
+              <p class="description">{product.description}</p>
+              <div class="technologies">
+                {product.technologies.map((tech) => (
+                  <span class="tech-tag">{tech}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="certifications-section">
+      <div class="container">
+        <h2>인증 및 자격증</h2>
+        <p class="note">{certifications.length}개의 Microsoft 인증 (활성 및 레거시). 전체 목록은 <a href="/ko/certifications">인증</a> 페이지를 참조하세요.</p>
+
+        <h2>상장 및 인정</h2>
+        <div class="awards-list">
+          {awards.map((award) => (
+            <div class="award-item">
+              <span class="award-title">{award.title}</span>
+              <span class="award-period">{award.period}</span>
+            </div>
+          ))}
+        </div>
+
+        <h2>출판물</h2>
+        <ul class="focus-areas">
+          {publications.map((pub) => (
+            <li>{pub.title} ({pub.year}, {pub.publisher})</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .about-hero {
+    padding: 3rem 0;
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+  }
+
+  .about-text h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+
+  .intro-bio {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .intro-bio {
+      color: #e0e0e0;
+    }
+  }
+
+  .focus-areas {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .focus-areas li {
+    padding: 0.75rem 0;
+    line-height: 1.6;
+    border-bottom: 1px solid #eee;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .focus-areas li {
+      border-bottom-color: #333;
+    }
+  }
+
+  .focus-areas li:last-child {
+    border-bottom: none;
+  }
+
+  .focus-areas strong {
+    color: #0066cc;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .focus-areas strong {
+      color: #60a5fa;
+    }
+  }
+
+  .stats-display {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .stats-display {
+      background-color: #1e293b;
+    }
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0066cc;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .stat-num {
+      color: #60a5fa;
+    }
+  }
+
+  .stat-desc {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .stat-desc {
+      color: #999;
+    }
+  }
+
+  .about-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .profile-image {
+    width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .contact-card {
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    border-left: 4px solid #0066cc;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .contact-card {
+      background-color: #1e293b;
+      border-left-color: #60a5fa;
+    }
+  }
+
+  .contact-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+  }
+
+  .contact-card p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    background-color: #0066cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.3rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.2s;
+  }
+
+  .btn:hover {
+    background-color: #0052a3;
+  }
+
+  .btn-secondary {
+    background-color: #666;
+  }
+
+  .btn-secondary:hover {
+    background-color: #555;
+  }
+
+  @media (max-width: 768px) {
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .about-sidebar {
+      order: -1;
+    }
+  }
+
+  .startup-section {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid #eee;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-section {
+      border-top-color: #333;
+    }
+  }
+
+  .startup-card {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-card {
+      background-color: #1e293b;
+    }
+  }
+
+  .startup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .startup-header h3 {
+    margin: 0;
+  }
+
+  .startup-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .startup-meta {
+      color: #999;
+    }
+  }
+
+  .startup-description {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .projects,
+  .achievements {
+    margin-top: 1rem;
+  }
+
+  .projects h4,
+  .achievements h4 {
+    margin: 0.5rem 0 0.75rem 0;
+    font-size: 0.95rem;
+    color: #0066cc;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .projects h4,
+    .achievements h4 {
+      color: #60a5fa;
+    }
+  }
+
+  .projects ul,
+  .achievements ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .projects li,
+  .achievements li {
+    padding: 0.5rem 0;
+    line-height: 1.5;
+  }
+
+  .projects li strong {
+    color: #333;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .projects li strong {
+      color: #f0f0f0;
+    }
+  }
+
+  .impact,
+  .patent {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.25rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .impact,
+    .patent {
+      color: #aaa;
+    }
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .product-card {
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    border-left: 4px solid #0066cc;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .product-card {
+      background-color: #1e293b;
+      border-left-color: #60a5fa;
+    }
+  }
+
+  .product-card h3 {
+    margin: 0 0 0.5rem 0;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .subtitle {
+      color: #aaa;
+    }
+  }
+
+  .meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 1rem 0;
+  }
+
+  .technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-tag {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    background-color: #e8f4f8;
+    color: #0066cc;
+    border-radius: 0.2rem;
+    font-size: 0.8rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .tech-tag {
+      background-color: #1a3a42;
+      color: #60a5fa;
+    }
+  }
+
+  .certifications-section {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid #eee;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .certifications-section {
+      border-top-color: #333;
+    }
+  }
+
+  .note {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .note {
+      color: #aaa;
+    }
+  }
+
+  .awards-list {
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .award-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .award-item {
+      border-bottom-color: #333;
+    }
+  }
+
+  .award-title {
+    font-weight: 500;
+  }
+
+  .award-period {
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .award-period {
+      color: #999;
+    }
+  }
+
+  .intro-text {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 1rem 0 2rem 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .intro-text {
+      color: #aaa;
+    }
+  }
+</style>

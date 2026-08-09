@@ -1,0 +1,217 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import * as dataKo from '../../lib/data.ko';
+
+const siteConfig = dataKo.siteConfig;
+---
+
+<BaseLayout title="연락처 - 유성호" description="프로젝트 논의를 위해 연락 주세요">
+  <Header currentPage="/ko/contact" lang="ko" />
+  <main>
+    <section class="contact-section">
+      <div class="container">
+        <h1>연락하기</h1>
+        <p class="intro">저는 새로운 프로젝트, 협업 기회, 그리고 당신의 디지털 변환을 어떻게 도와줄 수 있을지에 대해 논의하는 것에 항상 관심이 있습니다.</p>
+        
+        <div class="contact-content">
+          <div class="contact-methods">
+            <div class="method">
+              <div class="icon">✉️</div>
+              <h3>이메일</h3>
+              <p>프로젝트 또는 컨설팅 문의:</p>
+              <a href={`mailto:${siteConfig.email}`} class="contact-link">{siteConfig.email}</a>
+            </div>
+
+            <div class="method">
+              <div class="icon">💼</div>
+              <h3>LinkedIn</h3>
+              <p>LinkedIn에서 나의 최신 인사이트와 프로젝트를 팔로우하세요:</p>
+              <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" class="contact-link">
+                LinkedIn 프로필 →
+              </a>
+            </div>
+
+            <div class="method">
+              <div class="icon">💻</div>
+              <h3>GitHub</h3>
+              <p>내 오픈 소스 프로젝트와 기여를 탐색해보세요:</p>
+              <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" class="contact-link">
+                GitHub 프로필 →
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-info">
+            <h2>빠른 정보</h2>
+            <ul>
+              <li>서울, 한국 기반</li>
+              <li>20년 이상의 기술 경험</li>
+              <li>컨설팅 및 전략 자문 가능</li>
+              <li>Azure 클라우드 및 AI 솔루션 전문</li>
+              <li>엔터프라이즈 아키텍처 및 DevOps 전문</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .contact-section {
+    padding: 3rem 0;
+  }
+
+  .contact-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .contact-section h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .intro {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 65ch;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .intro {
+      color: #cbd5e1;
+    }
+  }
+
+  .contact-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .contact-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .contact-methods {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .method {
+    padding: 1.5rem;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .method {
+      background: #1e293b;
+      border-color: #334155;
+    }
+  }
+
+  .icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .method h3 {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+  }
+
+  .method p {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0.5rem 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .method p {
+      color: #cbd5e1;
+    }
+  }
+
+  .contact-link {
+    display: inline-block;
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .contact-link {
+      color: #60a5fa;
+    }
+  }
+
+  .contact-link:hover {
+    color: #0052a3;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .contact-link:hover {
+      color: #93c5fd;
+    }
+  }
+
+  .contact-info {
+    padding: 1.5rem;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    border-left: 4px solid #0066cc;
+    height: fit-content;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .contact-info {
+      background: #1e293b;
+      border-color: #334155;
+      border-left-color: #60a5fa;
+    }
+  }
+
+  .contact-info h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+  }
+
+  .contact-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .contact-info li {
+    padding: 0.5rem 0;
+    color: #666;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .contact-info li {
+      color: #cbd5e1;
+      border-bottom-color: #334155;
+    }
+  }
+
+  .contact-info li:last-child {
+    border-bottom: none;
+  }
+</style>

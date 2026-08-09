@@ -1,0 +1,100 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => b.data.year - a.data.year
+);
+---
+
+<BaseLayout title="포트폴리오 - 유성호" description="내 프로젝트 포트폴리오 및 케이스 스터디 살펴보기">
+  <Header currentPage="/ko/portfolio" lang="ko" />
+  <main>
+    <section class="portfolio-section">
+      <div class="container">
+        <h1>포트폴리오</h1>
+        <p class="intro">
+          지난 20년 동안 스타트업에서 포춘 500대 기업까지 다양한 규모의 조직에서 진행한 주요 프로젝트들입니다.
+          <br/>
+          <strong>Microsoft 이전 (2009-2019):</strong> (주)디벨로피언스에서 기술 이사로 수행한 DevOps 및 클라우드 마이그레이션 프로젝트
+          <br/>
+          <strong>Microsoft 시대 (2019-현재):</strong> Microsoft 인증 교육자로 수행한 실무 PoC 및 엔터프라이즈 AI/Copilot 도입 프로그램
+          <br/>
+          <br/>
+          이 경험들은 교육 슬라이드를 넘어 실무 구현, 실제 비즈니스 성과, 검증된 아키텍처 패턴으로 나아가는 제 철학을 반영합니다.
+        </p>
+        
+        <div class="projects-grid">
+          {projects.map((project) => (
+            <ProjectCard
+              title={project.data.title}
+              description={project.data.description}
+              year={project.data.year}
+              client={project.data.client}
+              technologies={project.data.technologies}
+              achievements={project.data.achievements}
+              slug={project.id}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .portfolio-section {
+    padding: 3rem 0;
+  }
+
+  .portfolio-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .portfolio-section h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .intro {
+    font-size: 1rem;
+    color: #666;
+    max-width: 75ch;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .intro {
+      color: #cbd5e1;
+    }
+  }
+
+  .intro strong {
+    color: #0066cc;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .intro strong {
+      color: #60a5fa;
+    }
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

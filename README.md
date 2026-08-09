@@ -207,7 +207,147 @@ git diff HEAD~1
 
 ---
 
-## 🌐 Deployment
+## � Multilingual Support (다국어 지원)
+
+This portfolio supports **English (primary) and Korean (secondary)** with proper language-based routing and content management.
+
+### Language Architecture
+
+- **Default Language**: English (`/` or `/en/*` routes)
+- **Secondary Language**: Korean (`/ko/*` routes)
+- **Routing**: Path-based language detection
+- **Content Structure**: Parallel data files (`data.ts` for English, `data.ko.ts` for Korean)
+
+### File Structure
+
+```
+src/
+├── lib/
+│   ├── i18n.ts           # ⭐ Multilingual utilities (routing, translations)
+│   ├── data.ts           # 🇬🇧 English content (PRIMARY)
+│   └── data.ko.ts        # 🇰🇷 Korean content (SECONDARY)
+├── pages/
+│   ├── index.astro       # English: /
+│   ├── about.astro       # English: /about
+│   ├── ko/               # Korean pages folder
+│   │   ├── index.astro   # Korean: /ko/
+│   │   ├── about.astro   # Korean: /ko/about
+│   │   └── ...           # All pages mirrored
+│   └── ...
+└── components/
+    └── Header.astro      # Language switcher UI + multilingual nav
+```
+
+### Multilingual Workflow Rules
+
+**🔴 RULE 1: Always update English version first**
+- Edit content in `src/lib/data.ts` (English source)
+- Make all structural or data changes here
+- English is the single source of truth
+
+**🟢 RULE 2: Korean version syncs afterward**
+- Update corresponding translations in `src/lib/data.ko.ts`
+- Key structure must remain identical to English
+- Follow Korean-specific naming/terminology conventions
+
+**🟡 RULE 3: Keep data structure synchronized**
+- Both files must export identical keys and object structures
+- Never add Korean-only or English-only exports
+- This enables seamless component code reuse
+
+**Example: Adding a new certification**
+
+1. **Update English (data.ts) FIRST:**
+   ```typescript
+   export const certifications = [
+     // ... existing certs ...
+     {
+       title: "Microsoft Certified: New Cert 2026",
+       status: "active",
+       badgeUrl: "/images/badges/new-cert-2026.png",
+     }
+   ];
+   ```
+
+2. **Then sync to Korean (data.ko.ts):**
+   ```typescript
+   export const certifications = [
+     // ... existing certs ...
+     {
+       title: "Microsoft 인증: 새 인증 2026",
+       status: "active",
+       badgeUrl: "/images/badges/new-cert-2026.png",
+     }
+   ];
+   ```
+
+3. **The certification automatically appears in:**
+   - `/certifications` (English)
+   - `/ko/certifications` (Korean)
+
+### Language Switcher
+
+- Located in header on every page
+- Displays as "En / 한국어" toggle button
+- Automatically switches between `/` ↔ `/ko/`
+- Preserves current page context during switch
+- Dark mode and responsive design included
+
+### Translation Utilities
+
+The `i18n.ts` module provides helper functions for multilingual pages:
+
+```typescript
+// Get current language from URL path
+const language = getLanguageFromPath('/ko/about');  // Returns: 'ko'
+
+// Convert path between languages
+const koPath = getLocalizedPath('/about', 'ko');    // Returns: '/ko/about'
+const enPath = getLocalizedPath('/ko/about', 'en'); // Returns: '/about'
+
+// Get language switcher link
+const toggleLink = getSwitcherLink('ko', '/ko/about'); // Returns: '/about'
+
+// Translate UI labels
+const label = t('About', 'ko');  // Returns: '소개'
+```
+
+### Adding New Pages
+
+When adding a new page to the portfolio:
+
+1. Create English version: `src/pages/[page-name].astro`
+   - Import: `import * as data from '../lib/data'`
+   - Header: `<Header currentPage="/[page-name]" lang="en" />`
+
+2. Create Korean version: `src/pages/ko/[page-name].astro`
+   - Import: `import * as dataKo from '../../lib/data.ko'`
+   - Header: `<Header currentPage="/ko/[page-name]" lang="ko" />`
+
+3. Use identical component structure in both versions
+
+### Maintenance Reminders
+
+- **Content Updates**: Always edit English version (`data.ts`) first
+- **Quarterly Review**: Check Korean translations haven't diverged significantly
+- **Badge Files**: Reference paths are identical in both languages
+- **Links**: Update both `/` and `/ko/` paths when adding new routes
+- **Testing**: Build and preview both language versions before deploying
+
+```bash
+# To test multilingual build:
+npm run build
+# Verify both /pages/ and /ko/pages/ routes in dist/
+
+npm run preview
+# Navigate to:
+# - http://localhost:3000/
+# - http://localhost:3000/ko/
+```
+
+---
+
+## �🌐 Deployment
 
 ### Automatic Deployment (GitHub Pages)
 

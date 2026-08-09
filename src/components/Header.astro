@@ -3,11 +3,20 @@ import { siteConfig } from '../lib/data';
 
 interface Props {
   currentPage?: string;
+  lang?: 'en' | 'ko';
 }
 
-const { currentPage = '' } = Astro.props;
+const { currentPage = '', lang = 'en' } = Astro.props;
 
-const navItems = [
+const navItems = lang === 'ko' ? [
+  { label: '홈', href: '/ko/' },
+  { label: '소개', href: '/ko/about' },
+  { label: '전문성', href: '/ko/expertise' },
+  { label: '교육', href: '/ko/training' },
+  { label: '포트폴리오', href: '/ko/portfolio' },
+  { label: '인증', href: '/ko/certifications' },
+  { label: '연락처', href: '/ko/contact' },
+] : [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Expertise', href: '/expertise' },
@@ -16,12 +25,18 @@ const navItems = [
   { label: 'Certifications', href: '/certifications' },
   { label: 'Contact', href: '/contact' },
 ];
+
+// Language switcher link
+const otherLangLink = lang === 'ko' 
+  ? currentPage.replace('/ko/', '/') || '/'
+  : currentPage ? `/ko${currentPage}` : '/ko/';
+const otherLangLabel = lang === 'ko' ? 'English' : '한국어';
 ---
 
 <header class="header">
   <div class="container">
     <div class="header-content">
-      <a href="/" class="logo">
+      <a href={lang === 'ko' ? '/ko/' : '/'} class="logo">
         <h1>{siteConfig.name}</h1>
       </a>
       <nav class="nav">
@@ -33,6 +48,11 @@ const navItems = [
               </a>
             </li>
           ))}
+          <li class="lang-switcher">
+            <a href={otherLangLink} class="lang-link" title={`Switch to ${otherLangLabel}`}>
+              {otherLangLabel}
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
@@ -116,6 +136,45 @@ const navItems = [
     }
   }
 
+  .lang-switcher {
+    margin-left: 1rem;
+    border-left: 1px solid #e5e7eb;
+    padding-left: 1rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .lang-switcher {
+      border-left-color: #334155;
+    }
+  }
+
+  .lang-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #666;
+    background-color: #f0f0f0;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.3rem;
+    transition: all 0.2s;
+  }
+
+  .lang-link:hover {
+    background-color: #e0e0e0;
+    color: #333;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .lang-link {
+      color: #ccc;
+      background-color: #333;
+    }
+
+    .lang-link:hover {
+      background-color: #444;
+      color: #f0f0f0;
+    }
+  }
+
   @media (max-width: 768px) {
     .header-content {
       flex-direction: column;
@@ -126,6 +185,12 @@ const navItems = [
       flex-wrap: wrap;
       gap: 1rem;
       justify-content: center;
+    }
+
+    .lang-switcher {
+      margin-left: 0;
+      border-left: none;
+      padding-left: 0;
     }
   }
 </style>

@@ -1,0 +1,235 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import * as dataKo from '../../lib/data.ko';
+import { t } from '../../lib/i18n';
+
+const lang = 'ko';
+const siteConfig = dataKo.siteConfig;
+const bio = dataKo.bio;
+const stats = dataKo.stats;
+---
+
+<BaseLayout title={siteConfig.title} description={siteConfig.description}>
+  <Header currentPage="/ko/" lang={lang} />
+  <main class="main-container">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>{siteConfig.name}</h1>
+            <p class="tagline">{bio.short}</p>
+            <p class="bio">{bio.long}</p>
+            <div class="cta-buttons">
+              <a href="/ko/portfolio" class="btn btn-primary">내 작업 보기</a>
+              <a href="/ko/contact" class="btn btn-secondary">연락하기</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img src="/images/profile/sungo-you.jpg" alt={siteConfig.name} />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="container">
+        <div class="stats-grid">
+          {stats.map((stat) => (
+            <div class="stat-item">
+              <div class="stat-value">{stat.value}</div>
+              <div class="stat-label">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>당신의 비즈니스를 변환할 준비가 되었나요?</h2>
+        <p>클라우드 아키텍처, AI, DevOps가 당신의 조직을 어떻게 발전시킬 수 있는지 함께 논의해봅시다.</p>
+        <a href="/ko/contact" class="btn btn-primary">대화 시작하기</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .main-container {
+    flex: 1;
+  }
+
+  .hero {
+    padding: 4rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 2rem 0;
+    }
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .hero-text h1 {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .tagline {
+    font-size: 1.25rem;
+    color: #0066cc;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .bio {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 2rem;
+    white-space: pre-wrap;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .cta-buttons {
+      flex-direction: column;
+    }
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background-color: #0066cc;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: #0052a3;
+  }
+
+  .btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background-color: #e0e0e0;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+  }
+
+  .stats {
+    padding: 4rem 0;
+    background-color: #f9f9f9;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0066cc;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+  }
+
+  .cta-section {
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-section p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 2rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .bio {
+      color: #ccc;
+    }
+
+    .stats {
+      background-color: #1a1a1a;
+    }
+
+    .btn-secondary {
+      background-color: #333;
+      color: #f0f0f0;
+    }
+
+    .btn-secondary:hover {
+      background-color: #444;
+    }
+
+    .cta-section p {
+      color: #ccc;
+    }
+  }
+</style>
