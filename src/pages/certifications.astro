@@ -19,8 +19,8 @@ const legacyCerts = certifications.filter((c) => c.status === 'legacy');
         <div class="cert-grid">
           {activeCerts.map((cert) => (
             <div class="cert-card">
-              {cert.badgeUrl ? (
-                <img src={cert.badgeUrl} alt={cert.title} class="cert-badge" />
+              {cert.badge ? (
+                <div class="cert-icon">{cert.badge}</div>
               ) : (
                 <div class="cert-icon">🏆</div>
               )}

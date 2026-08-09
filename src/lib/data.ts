@@ -119,19 +119,20 @@ export const communityActivities = [
 ];
 
 // Active Microsoft certifications, per Microsoft Learn profile (14 items, screenshot-verified).
+// Note: Using Unicode badges instead of external URLs for better reliability on GitHub Pages
 export const certifications = [
-  { title: "Microsoft Certified: Identity and Access Administrator Associate", status: "active", badgeUrl: "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-identity-access-administrator-badge.svg" },
-  { title: "Microsoft Certified: DevOps Engineer Expert", status: "active", badgeUrl: "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-expert-devops-engineer-badge.svg" },
-  { title: "Microsoft Certified: Azure AI Engineer Associate", status: "active", badgeUrl: "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-ai-engineer-badge.svg" },
-  { title: "Microsoft Certified: Azure Developer Associate", status: "active", badgeUrl: "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-azure-developer-badge.svg" },
-  { title: "Microsoft Certified: Azure Administrator Associate", status: "active", badgeUrl: "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-azure-administrator-badge.svg" },
-  { title: "Microsoft Certified: Azure Network Engineer Associate", status: "active", badgeUrl: "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-network-engineer-badge.svg" },
-  { title: "Microsoft Certified: Azure Security Engineer Associate", status: "active", badgeUrl: "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-security-engineer-badge.svg" },
-  { title: "Microsoft Certified: Azure Solutions Architect Expert", status: "active", badgeUrl: "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-expert-azure-solutions-architect-badge.svg" },
-  { title: "GitHub Copilot Certification", status: "active" },
-  { title: "Microsoft Certified: Azure AI Fundamentals", status: "active", badgeUrl: "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-fundamentals-azure-ai-badge.svg" },
-  { title: "Microsoft Certified: Azure Fundamentals", status: "active", badgeUrl: "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-fundamentals-azure-badge.svg" },
-  { title: "Microsoft Certified Trainer (MCT)", status: "active", note: "2019-Present", badgeUrl: "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-trainer-badge.svg" },
+  { title: "Microsoft Certified: Identity and Access Administrator Associate", status: "active", badge: "🔐" },
+  { title: "Microsoft Certified: DevOps Engineer Expert", status: "active", badge: "⚙️" },
+  { title: "Microsoft Certified: Azure AI Engineer Associate", status: "active", badge: "🤖" },
+  { title: "Microsoft Certified: Azure Developer Associate", status: "active", badge: "💻" },
+  { title: "Microsoft Certified: Azure Administrator Associate", status: "active", badge: "🛠️" },
+  { title: "Microsoft Certified: Azure Network Engineer Associate", status: "active", badge: "🌐" },
+  { title: "Microsoft Certified: Azure Security Engineer Associate", status: "active", badge: "🔒" },
+  { title: "Microsoft Certified: Azure Solutions Architect Expert", status: "active", badge: "🏗️" },
+  { title: "GitHub Copilot Certification", status: "active", badge: "🤖" },
+  { title: "Microsoft Certified: Azure AI Fundamentals", status: "active", badge: "🧠" },
+  { title: "Microsoft Certified: Azure Fundamentals", status: "active", badge: "☁️" },
+  { title: "Microsoft Certified Trainer (MCT)", status: "active", note: "2019-Present", badge: "👨‍🏫" },
   { title: "Microsoft Certified: Azure Solutions Architect Expert (Legacy)", status: "legacy" },
   { title: "Microsoft Certified: Azure Developer Associate (Legacy)", status: "legacy" },
   { title: "Microsoft Certified: Azure Administrator Associate (Legacy)", status: "legacy" },
