@@ -2,22 +2,22 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { trainingTracks, trainingClients, communityActivities, trainingByYear } from '../lib/data.en';
+import { trainingTracks, trainingClients, communityActivities, trainingByYear } from '../lib/data';
 ---
 
-<BaseLayout title="Microsoft Training - SungHo You" description="Microsoft Certified Trainer delivering Azure, AI, GitHub, and Copilot training since 2019">
-  <Header currentPage="/training" lang="en" />
+<BaseLayout title="Microsoft 교육 - 유승호" description="2019년부터 Azure, AI, GitHub, Copilot 교육을 제공하는 Microsoft 인증 교육자">
+  <Header currentPage="/training" lang="ko" />
   <main>
     <section class="training-section">
       <div class="container">
-        <h1>Microsoft Training</h1>
-        <p class="intro">As a Microsoft Certified Trainer (MCT) since November 2019, I've delivered 272+ training sessions (2020–present) to enterprise teams across Azure and AI curricula.</p>
+        <h1>Microsoft 교육</h1>
+        <p class="intro">2019년 11월 Microsoft 인증 교육자(MCT)로 입사한 이후, Azure와 AI 교과과정에 걸쳐 엔터프라이즈 팀들을 대상으로 272회 이상의 교육 세션을 진행했습니다.</p>
 
         <div class="year-grid">
           {trainingByYear.map((yr) => (
             <div class="year-card">
-              <div class="year-num">{yr.year}{yr.inProgress ? ' (in progress)' : ''}</div>
-              <div class="year-sessions">{yr.sessions} sessions</div>
+              <div class="year-num">{yr.year}{yr.inProgress ? ' (진행 중)' : ''}</div>
+              <div class="year-sessions">{yr.sessions} 세션</div>
               <div class="year-courses">{yr.courses.join(', ')}</div>
             </div>
           ))}
@@ -42,8 +42,8 @@ import { trainingTracks, trainingClients, communityActivities, trainingByYear } 
 
     <section class="clients-section">
       <div class="container">
-        <h2>Enterprise Clients Trained</h2>
-        <p class="note">Since joining Microsoft, training delivered to teams at:</p>
+        <h2>교육을 받은 엔터프라이즈 고객사</h2>
+        <p class="note">Microsoft 입사 이후 다음 조직의 팀들을 대상으로 교육 진행:</p>
         <div class="clients-grid">
           {trainingClients.map((client) => (
             <span class="client-badge">{client}</span>
@@ -54,7 +54,7 @@ import { trainingTracks, trainingClients, communityActivities, trainingByYear } 
 
     <section class="community-section">
       <div class="container">
-        <h2>Community Involvement</h2>
+        <h2>커뮤니티 활동</h2>
         <div class="community-grid">
           {communityActivities.map((activity) => (
             <div class="community-card">
@@ -66,7 +66,7 @@ import { trainingTracks, trainingClients, communityActivities, trainingByYear } 
       </div>
     </section>
   </main>
-  <Footer />
+  <Footer lang="ko" />
 </BaseLayout>
 
 <style>
@@ -231,26 +231,24 @@ import { trainingTracks, trainingClients, communityActivities, trainingByYear } 
     }
   }
 
-  .clients-section,
-  .community-section {
+  .clients-section {
     padding: 3rem 0;
     border-top: 1px solid #e5e7eb;
   }
 
   @media (prefers-color-scheme: dark) {
-    .clients-section,
-    .community-section {
+    .clients-section {
       border-top-color: #334155;
     }
   }
 
-  .clients-section h2,
-  .community-section h2 {
+  .clients-section h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
   }
 
   .note {
+    font-size: 0.95rem;
     color: #666;
     margin-bottom: 1.5rem;
   }
@@ -264,31 +262,45 @@ import { trainingTracks, trainingClients, communityActivities, trainingByYear } 
   .clients-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 1rem;
   }
 
   .client-badge {
     display: inline-block;
     background: #f9fafb;
     border: 1px solid #e5e7eb;
-    padding: 0.5rem 1.25rem;
-    border-radius: 999px;
-    font-weight: 600;
-    color: #1f2937;
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
   }
 
   @media (prefers-color-scheme: dark) {
     .client-badge {
       background: #1e293b;
       border-color: #334155;
-      color: #e2e8f0;
     }
+  }
+
+  .community-section {
+    padding: 3rem 0;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .community-section {
+      border-top-color: #334155;
+    }
+  }
+
+  .community-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
   }
 
   .community-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
   }
 
   .community-card {
@@ -306,15 +318,20 @@ import { trainingTracks, trainingClients, communityActivities, trainingByYear } 
   }
 
   .community-card h3 {
-    font-size: 1.05rem;
+    color: #0066cc;
     margin-bottom: 0.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .community-card h3 {
+      color: #60a5fa;
+    }
   }
 
   .community-card p {
     color: #666;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   @media (prefers-color-scheme: dark) {

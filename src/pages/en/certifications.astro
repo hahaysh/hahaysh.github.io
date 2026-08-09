@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { certifications, otherCertifications, awards } from '../../lib/data.en';
+
+const activeCerts = certifications.filter((c) => c.status === 'active');
+const legacyCerts = certifications.filter((c) => c.status === 'legacy');
+---
+
+<BaseLayout title="Certifications - SungHo You" description="Microsoft Azure and AI certifications" lang="en">
+  <Header currentPage="/en/certifications" lang="en" />
+  <main>
+    <section class="certs-section">
+      <div class="container">
+        <h1>Certifications</h1>
+        <p class="intro">Active Microsoft certifications, per Microsoft Learn profile.</p>
+
+        <div class="cert-grid">
+          {activeCerts.map((cert) => (
+            <div class="cert-card">
+              {cert.badgeUrl ? (
+                <img src={cert.badgeUrl} alt={cert.title} class="cert-badge" />
+              ) : cert.badge ? (
+                <div class="cert-icon">{cert.badge}</div>
+              ) : (
+                <div class="cert-icon">🏆</div>
+              )}
+              <h3>{cert.title}</h3>
+              {cert.note && <p class="cert-note">{cert.note}</p>}
+            </div>
+          ))}
+        </div>
+
+        <h2 class="section-heading">Legacy Certifications</h2>
+        <p class="note">Previously earned, since superseded by newer versions.</p>
+        <div class="cert-grid">
+          {legacyCerts.map((cert) => (
+            <div class="cert-card legacy">
+              <div class="cert-icon">📜</div>
+              <h3>{cert.title}</h3>
+            </div>
+          ))}
+        </div>
+
+        <h2 class="section-heading">Other Professional Certifications</h2>
+        <div class="cert-grid">
+          {otherCertifications.map((cert) => (
+            <div class="cert-card">
+              <div class="cert-icon">🎓</div>
+              <h3>{cert.title}</h3>
+              {cert.note && <p class="cert-note">{cert.note}</p>}
+            </div>
+          ))}
+        </div>
+
+        <h2 class="section-heading">Awards & Recognition</h2>
+        <div class="awards-list">
+          {awards.map((award) => (
+            <div class="award-item">
+              <span class="award-title">{award.title}</span>
+              <span class="award-period">{award.period}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer lang="en" />
+</BaseLayout>
+
+<style>
+  .certs-section {
+    padding: 3rem 0;
+  }
+
+  .certs-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+    margin: 3rem 0 0.5rem;
+  }
+
+  .note {
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .note {
+      color: #94a3b8;
+    }
+  }
+
+  .cert-card.legacy {
+    opacity: 0.7;
+  }
+
+  .cert-note {
+    font-size: 0.8rem;
+    color: #666;
+    margin: 0.25rem 0 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cert-note {
+      color: #94a3b8;
+    }
+  }
+
+  .awards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .award-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: #f9fafb;
+    border-radius: 6px;
+    flex-wrap: wrap;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .award-item {
+      background: #1e293b;
+    }
+  }
+
+  .award-title {
+    font-weight: 600;
+  }
+
+  .award-period {
+    color: #666;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .award-period {
+      color: #94a3b8;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .certs-section h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .intro {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 65ch;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .intro {
+      color: #cbd5e1;
+    }
+  }
+
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .cert-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cert-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+  }
+
+  .cert-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cert-card:hover {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .cert-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .cert-badge {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin: 0 auto 1rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cert-badge {
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+  }
+
+  .cert-code {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #0066cc;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cert-code {
+      color: #60a5fa;
+    }
+  }
+
+  .cert-card h3 {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 0;
+  }
+</style>

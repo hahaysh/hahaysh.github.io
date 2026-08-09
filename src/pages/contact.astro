@@ -2,74 +2,60 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { siteConfig } from '../lib/data.en';
+import { siteConfig } from '../lib/data';
 ---
 
-<BaseLayout title="Contact - SungHo You" description="Get in touch to discuss your project">
-  <Header currentPage="/contact" lang="en" />
+<BaseLayout title="연락처 - 유승호" description="프로젝트 논의를 위해 연락 주세요">
+  <Header currentPage="/contact" lang="ko" />
   <main>
     <section class="contact-section">
       <div class="container">
-        <h1>Let's Connect</h1>
-        <p class="intro">I'm always interested in discussing new projects, collaboration opportunities, and how I can help drive your digital transformation.</p>
+        <h1>연락하기</h1>
+        <p class="intro">저는 새로운 프로젝트, 협업 기회, 그리고 당신의 디지털 변환을 어떻게 도와줄 수 있을지에 대해 논의하는 것에 항상 관심이 있습니다.</p>
         
         <div class="contact-content">
           <div class="contact-methods">
             <div class="method">
               <div class="icon">✉️</div>
-              <h3>Email</h3>
-              <p>For inquiries about projects or consulting:</p>
+              <h3>이메일</h3>
+              <p>프로젝트 또는 컨설팅 문의:</p>
               <a href={`mailto:${siteConfig.email}`} class="contact-link">{siteConfig.email}</a>
             </div>
 
             <div class="method">
               <div class="icon">💼</div>
               <h3>LinkedIn</h3>
-              <p>Connect with me on LinkedIn to follow my latest insights and projects:</p>
+              <p>LinkedIn에서 나의 최신 인사이트와 프로젝트를 팔로우하세요:</p>
               <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" class="contact-link">
-                LinkedIn Profile →
+                LinkedIn 프로필 →
               </a>
             </div>
 
             <div class="method">
               <div class="icon">💻</div>
               <h3>GitHub</h3>
-              <p>Explore my open source projects and contributions:</p>
+              <p>내 오픈 소스 프로젝트와 기여를 탐색해보세요:</p>
               <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" class="contact-link">
-                GitHub Profile →
+                GitHub 프로필 →
               </a>
             </div>
           </div>
 
           <div class="contact-info">
-            <h2>Quick Facts</h2>
+            <h2>빠른 정보</h2>
             <ul>
-              <li>Based in Seoul, Korea</li>
-              <li>20+ years of technology experience</li>
-              <li>Available for consulting and strategic advisory</li>
-              <li>Expertise in Azure cloud and AI solutions</li>
-              <li>Microsoft Certified Trainer (MCT)</li>
-              <li>Microsoft C# MVP (2005-2019, 15 consecutive years)</li>
-            </ul>
-
-            <h2>How I Can Help</h2>
-            <ul>
-              <li><strong>Strategic Consulting:</strong> Guiding organizations through cloud transformation</li>
-              <li><strong>Solution Architecture:</strong> Designing scalable and secure Azure solutions</li>
-              <li><strong>DevOps Implementation:</strong> Building automated deployment pipelines</li>
-              <li><strong>AI Integration:</strong> Leveraging AI and LLMs for business solutions</li>
-              <li><strong>Technical Training:</strong> Delivering comprehensive team training programs</li>
+              <li>서울, 한국 기반</li>
+              <li>20년 이상의 기술 경험</li>
+              <li>컨설팅 및 전략 자문 가능</li>
+              <li>Azure 클라우드 및 AI 솔루션 전문</li>
+              <li>엔터프라이즈 아키텍처 및 DevOps 전문</li>
             </ul>
           </div>
-        </div>
-
-        <div class="response-time">
-          <p>📧 I typically respond to emails within 1-2 business days.</p>
         </div>
       </div>
     </section>
   </main>
-  <Footer />
+  <Footer lang="ko" />
 </BaseLayout>
 
 <style>
@@ -104,29 +90,28 @@ import { siteConfig } from '../lib/data.en';
 
   .contact-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: 3rem;
-    margin-bottom: 3rem;
+    margin-top: 2rem;
   }
 
-  @media (max-width: 968px) {
+  @media (max-width: 768px) {
     .contact-content {
       grid-template-columns: 1fr;
+      gap: 2rem;
     }
   }
 
   .contact-methods {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 2rem;
   }
 
   .method {
+    padding: 1.5rem;
     background: #f9fafb;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
-    padding: 2rem;
-    transition: all 0.3s;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -136,31 +121,20 @@ import { siteConfig } from '../lib/data.en';
     }
   }
 
-  .method:hover {
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .method:hover {
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    }
-  }
-
   .icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .method h3 {
-    font-size: 1.25rem;
+    font-size: 2rem;
     margin-bottom: 0.5rem;
   }
 
+  .method h3 {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+  }
+
   .method p {
-    color: #666;
     font-size: 0.95rem;
-    margin-bottom: 1rem;
+    color: #666;
+    margin: 0.5rem 0;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -173,7 +147,8 @@ import { siteConfig } from '../lib/data.en';
     display: inline-block;
     color: #0066cc;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
+    transition: color 0.2s;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -183,30 +158,35 @@ import { siteConfig } from '../lib/data.en';
   }
 
   .contact-link:hover {
-    text-decoration: underline;
+    color: #0052a3;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .contact-link:hover {
+      color: #93c5fd;
+    }
   }
 
   .contact-info {
+    padding: 1.5rem;
     background: #f9fafb;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
-    padding: 2rem;
+    border-left: 4px solid #0066cc;
+    height: fit-content;
   }
 
   @media (prefers-color-scheme: dark) {
     .contact-info {
       background: #1e293b;
       border-color: #334155;
+      border-left-color: #60a5fa;
     }
   }
 
   .contact-info h2 {
-    font-size: 1.25rem;
     margin: 0 0 1rem 0;
-  }
-
-  .contact-info h2:not(:first-child) {
-    margin-top: 2rem;
+    font-size: 1.1rem;
   }
 
   .contact-info ul {
@@ -218,44 +198,18 @@ import { siteConfig } from '../lib/data.en';
   .contact-info li {
     padding: 0.5rem 0;
     color: #666;
-    line-height: 1.6;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #e5e7eb;
   }
 
   @media (prefers-color-scheme: dark) {
     .contact-info li {
       color: #cbd5e1;
+      border-bottom-color: #334155;
     }
   }
 
-  .contact-info strong {
-    color: #1f2937;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .contact-info strong {
-      color: #e2e8f0;
-    }
-  }
-
-  .response-time {
-    text-align: center;
-    padding: 2rem;
-    background: #f0f9ff;
-    border-left: 4px solid #0066cc;
-    border-radius: 6px;
-    color: #1e3a8a;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .response-time {
-      background: #1e293b;
-      border-left-color: #3b82f6;
-      color: #cbd5e1;
-    }
-  }
-
-  .response-time p {
-    margin: 0;
-    font-weight: 500;
+  .contact-info li:last-child {
+    border-bottom: none;
   }
 </style>

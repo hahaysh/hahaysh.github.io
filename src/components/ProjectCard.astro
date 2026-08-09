@@ -7,9 +7,10 @@ interface Props {
   technologies: string[];
   achievements: string[];
   slug: string;
+  lang?: 'en' | 'ko';
 }
 
-const { title, description, year, client, technologies, achievements, slug } = Astro.props;
+const { title, description, year, client, technologies, achievements, slug, lang = 'ko' } = Astro.props;
 ---
 
 <article class="project-card">
@@ -22,7 +23,7 @@ const { title, description, year, client, technologies, achievements, slug } = A
   <p class="description">{description}</p>
   
   <div class="tech-stack">
-    <span class="label">📊 Technology Stack:</span>
+    <span class="label">{lang === 'ko' ? '📊 기술 스택:' : '📊 Technology Stack:'}</span>
     <div class="tags">
       {technologies.map((tech) => (
         <span class="tag">{tech}</span>
@@ -39,8 +40,8 @@ const { title, description, year, client, technologies, achievements, slug } = A
     ))}
   </div>
 
-  <a href={`/portfolio/${slug}`} class="read-more">
-    Read More →
+  <a href={`${lang === 'en' ? '/en' : ''}/portfolio/${slug}`} class="read-more">
+    {lang === 'ko' ? '자세히 보기 →' : 'Read More →'}
   </a>
 </article>
 

@@ -1,5 +1,7 @@
 ---
-import { siteConfig } from '../lib/data';
+import { siteConfig as koreanSiteConfig } from '../lib/data';
+import { siteConfig as englishSiteConfig } from '../lib/data.en';
+import { getSwitcherLink } from '../lib/i18n';
 
 interface Props {
   currentPage?: string;
@@ -7,36 +9,35 @@ interface Props {
 }
 
 const { currentPage = '', lang = 'en' } = Astro.props;
+const siteConfig = lang === 'ko' ? koreanSiteConfig : englishSiteConfig;
 
 const navItems = lang === 'ko' ? [
-  { label: '홈', href: '/ko/' },
-  { label: '소개', href: '/ko/about' },
-  { label: '전문성', href: '/ko/expertise' },
-  { label: '교육', href: '/ko/training' },
-  { label: '포트폴리오', href: '/ko/portfolio' },
-  { label: '인증', href: '/ko/certifications' },
-  { label: '연락처', href: '/ko/contact' },
+  { label: '홈', href: '/' },
+  { label: '소개', href: '/about' },
+  { label: '전문성', href: '/expertise' },
+  { label: '교육', href: '/training' },
+  { label: '포트폴리오', href: '/portfolio' },
+  { label: '인증', href: '/certifications' },
+  { label: '연락처', href: '/contact' },
 ] : [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Expertise', href: '/expertise' },
-  { label: 'Training', href: '/training' },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Certifications', href: '/certifications' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Home', href: '/en/' },
+  { label: 'About', href: '/en/about' },
+  { label: 'Expertise', href: '/en/expertise' },
+  { label: 'Training', href: '/en/training' },
+  { label: 'Portfolio', href: '/en/portfolio' },
+  { label: 'Certifications', href: '/en/certifications' },
+  { label: 'Contact', href: '/en/contact' },
 ];
 
 // Language switcher link
-const otherLangLink = lang === 'ko' 
-  ? currentPage.replace('/ko/', '/') || '/'
-  : currentPage ? `/ko${currentPage}` : '/ko/';
+const otherLangLink = getSwitcherLink(lang, currentPage || (lang === 'ko' ? '/' : '/en/'));
 const otherLangLabel = lang === 'ko' ? 'English' : '한국어';
 ---
 
 <header class="header">
   <div class="container">
     <div class="header-content">
-      <a href={lang === 'ko' ? '/ko/' : '/'} class="logo">
+      <a href={lang === 'ko' ? '/' : '/en/'} class="logo">
         <h1>{siteConfig.name}</h1>
       </a>
       <nav class="nav">

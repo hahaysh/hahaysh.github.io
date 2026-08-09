@@ -2,30 +2,30 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { siteConfig, bio, stats, certifications, awards, publications, startupExperience, startupProducts } from '../lib/data.en';
+import { siteConfig, bio, stats, certifications, awards, publications, startupExperience, startupProducts } from '../lib/data';
 ---
 
-<BaseLayout title="About - SungHo You" description="Learn more about my background and experience">
-  <Header currentPage="/about" lang="en" />
+<BaseLayout title="소개 - 유승호" description="내 배경과 경험에 대해 자세히 알아보기">
+  <Header currentPage="/about" lang="ko" />
   <main>
     <section class="about-hero">
       <div class="container">
-        <h1>About Me</h1>
+        <h1>소개</h1>
         <div class="about-content">
           <div class="about-text">
             <p class="intro-bio">{bio.long}</p>
 
-            <h2>What I'm Passionate About</h2>
+            <h2>제가 집중하고 있는 분야</h2>
             <ul class="focus-areas">
-              <li><strong>Azure Cloud Platform:</strong> From infrastructure to serverless solutions, I love designing systems that scale.</li>
-              <li><strong>DevOps & Transformation:</strong> Helping organizations move faster and ship better software through modern practices.</li>
-              <li><strong>AI & Intelligent Agents:</strong> Exploring how AI will reshape the way we build software and solve problems.</li>
-              <li><strong>Teaching & Mentoring:</strong> There's nothing better than that moment when something clicks for someone you're training.</li>
-              <li><strong>Enterprise Architecture:</strong> Building reliable systems that serve millions of users across global markets.</li>
-              <li><strong>GitHub & Developer Tools:</strong> Making developers' lives easier with modern tooling and practices.</li>
+              <li><strong>Azure 클라우드:</strong> 인프라부터 서버리스까지, 조직의 상황에 맞는 확장 가능하고 안전한 구조를 설계합니다.</li>
+              <li><strong>DevOps와 디지털 전환:</strong> 자동화와 협업 방식을 정리해 더 빠르고 안정적으로 소프트웨어를 배포할 수 있도록 돕습니다.</li>
+              <li><strong>AI와 지능형 에이전트:</strong> 새로운 AI 기술을 실제 업무에 어떻게 연결할 수 있는지 살펴봅니다.</li>
+              <li><strong>기술 교육과 멘토링:</strong> 복잡한 개념을 쉽게 설명하고, 팀이 직접 활용할 수 있도록 함께 연습합니다.</li>
+              <li><strong>엔터프라이즈 아키텍처:</strong> 많은 사용자가 안정적으로 사용할 수 있는 시스템을 설계하고 운영해 왔습니다.</li>
+              <li><strong>GitHub와 개발자 도구:</strong> 개발자가 반복 작업을 줄이고 핵심 문제에 집중할 수 있는 환경을 만듭니다.</li>
             </ul>
 
-            <h2>By The Numbers</h2>
+            <h2>통계</h2>
             <div class="stats-display">
               {stats.map((stat) => (
                 <div class="stat">
@@ -39,9 +39,9 @@ import { siteConfig, bio, stats, certifications, awards, publications, startupEx
           <aside class="about-sidebar">
             <img src="/images/profile/sungo-you.jpg" alt={siteConfig.name} class="profile-image" />
             <div class="contact-card">
-              <h3>Let's Connect</h3>
-              <p>Interested in discussing cloud architecture, AI solutions, or training initiatives?</p>
-              <a href={`mailto:${siteConfig.email}`} class="btn">Email Me</a>
+              <h3>연락하기</h3>
+              <p>클라우드 아키텍처, AI 솔루션 또는 교육 이니셔티브에 대해 논의하고 싶으신가요?</p>
+              <a href={`mailto:${siteConfig.email}`} class="btn">이메일 보내기</a>
               <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
             </div>
           </aside>
@@ -51,8 +51,8 @@ import { siteConfig, bio, stats, certifications, awards, publications, startupEx
 
     <section class="startup-section">
       <div class="container">
-        <h2>Startup & Enterprise Experience</h2>
-        <p class="intro-text">Before joining Microsoft as a Certified Trainer in 2019, I led technical organizations at multiple startups, delivering enterprise-grade solutions for Fortune 500 companies across finance, retail, automotive, and media sectors.</p>
+        <h2>스타트업 및 엔터프라이즈 경험</h2>
+        <p class="intro-text">2019년 Microsoft에 합류하기 전에는 여러 스타트업에서 기술 조직을 이끌었습니다. 금융, 유통, 자동차, 미디어 분야의 기업들과 함께 엔터프라이즈급 시스템을 설계하고 구현했습니다.</p>
         
         {startupExperience.map((startup) => (
           <div class="startup-card">
@@ -67,7 +67,7 @@ import { siteConfig, bio, stats, certifications, awards, publications, startupEx
             
             {startup.keyProjects && startup.keyProjects.length > 0 && (
               <div class="projects">
-                <h4>Key Projects</h4>
+                <h4>주요 프로젝트</h4>
                 <ul>
                   {startup.keyProjects.map((project) => (
                     <li>
@@ -83,7 +83,7 @@ import { siteConfig, bio, stats, certifications, awards, publications, startupEx
             
             {startup.achievements && startup.achievements.length > 0 && (
               <div class="achievements">
-                <h4>Key Achievements</h4>
+                <h4>주요 성과</h4>
                 <ul>
                   {startup.achievements.map((achievement) => (
                     <li>{achievement}</li>
@@ -94,8 +94,8 @@ import { siteConfig, bio, stats, certifications, awards, publications, startupEx
           </div>
         ))}
 
-        <h2>Products & Services</h2>
-        <p class="intro-text">Core products developed during startup years that served enterprise customers:</p>
+        <h2>제품 및 서비스</h2>
+        <p class="intro-text">스타트업 시절 직접 개발해 실제 기업 고객의 업무에 활용된 제품들입니다.</p>
         
         <div class="products-grid">
           {startupProducts.map((product) => (
@@ -120,10 +120,10 @@ import { siteConfig, bio, stats, certifications, awards, publications, startupEx
 
     <section class="certifications-section">
       <div class="container">
-        <h2>Certifications & Credentials</h2>
-        <p class="note">{certifications.length} Microsoft certifications (active and legacy). See the full list on the <a href="/certifications">Certifications</a> page.</p>
+        <h2>인증 및 자격증</h2>
+        <p class="note">{certifications.length}개의 Microsoft 인증 (활성 및 레거시). 전체 목록은 <a href="/certifications">인증</a> 페이지를 참조하세요.</p>
 
-        <h2>Awards & Recognition</h2>
+        <h2>상장 및 인정</h2>
         <div class="awards-list">
           {awards.map((award) => (
             <div class="award-item">
@@ -133,7 +133,7 @@ import { siteConfig, bio, stats, certifications, awards, publications, startupEx
           ))}
         </div>
 
-        <h2>Publications</h2>
+        <h2>출판물</h2>
         <ul class="focus-areas">
           {publications.map((pub) => (
             <li>{pub.title} ({pub.year}, {pub.publisher})</li>
@@ -142,23 +142,12 @@ import { siteConfig, bio, stats, certifications, awards, publications, startupEx
       </div>
     </section>
   </main>
-  <Footer />
+  <Footer lang="ko" />
 </BaseLayout>
 
 <style>
   .about-hero {
     padding: 3rem 0;
-  }
-
-  .about-hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-  }
-
-  @media (max-width: 768px) {
-    .about-hero h1 {
-      font-size: 2rem;
-    }
   }
 
   .about-content {
@@ -167,93 +156,70 @@ import { siteConfig, bio, stats, certifications, awards, publications, startupEx
     gap: 3rem;
   }
 
-  @media (max-width: 768px) {
-    .about-content {
-      grid-template-columns: 1fr;
-    }
-  }
-
   .about-text h2 {
-    font-size: 1.5rem;
-    margin: 2rem 0 1rem;
-  }
-
-  .about-text h2:first-child {
-    margin-top: 0;
-  }
-
-  .about-text p {
-    color: #666;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-    white-space: pre-wrap;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
   }
 
   .intro-bio {
-    font-size: 1.05rem;
-    color: #555;
-    line-height: 1.9;
-    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: #333;
   }
 
   @media (prefers-color-scheme: dark) {
     .intro-bio {
-      color: #e2e8f0;
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .about-text p {
-      color: #cbd5e1;
+      color: #e0e0e0;
     }
   }
 
   .focus-areas {
     list-style: none;
     padding: 0;
-    margin: 0 0 2rem 0;
+    margin: 1rem 0;
   }
 
   .focus-areas li {
-    padding: 1rem;
-    margin-bottom: 0.5rem;
-    background: #f9fafb;
-    border-left: 4px solid #0066cc;
-    border-radius: 4px;
-    color: #666;
+    padding: 0.75rem 0;
     line-height: 1.6;
+    border-bottom: 1px solid #eee;
   }
 
   @media (prefers-color-scheme: dark) {
     .focus-areas li {
-      background: #1e293b;
-      border-left-color: #3b82f6;
-      color: #cbd5e1;
+      border-bottom-color: #333;
     }
   }
 
+  .focus-areas li:last-child {
+    border-bottom: none;
+  }
+
   .focus-areas strong {
-    color: #1f2937;
+    color: #0066cc;
   }
 
   @media (prefers-color-scheme: dark) {
     .focus-areas strong {
-      color: #e2e8f0;
+      color: #60a5fa;
     }
   }
 
   .stats-display {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-    background: #f9fafb;
-    padding: 2rem;
-    border-radius: 8px;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
   }
 
   @media (prefers-color-scheme: dark) {
     .stats-display {
-      background: #1e293b;
+      background-color: #1e293b;
     }
   }
 
@@ -263,9 +229,8 @@ import { siteConfig, bio, stats, certifications, awards, publications, startupEx
 
   .stat-num {
     font-size: 2rem;
-    font-weight: bold;
+    font-weight: 700;
     color: #0066cc;
-    margin-bottom: 0.5rem;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -275,499 +240,247 @@ import { siteConfig, bio, stats, certifications, awards, publications, startupEx
   }
 
   .stat-desc {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: #666;
-    line-height: 1.4;
+    margin-top: 0.5rem;
   }
 
   @media (prefers-color-scheme: dark) {
     .stat-desc {
-      color: #cbd5e1;
+      color: #999;
     }
   }
 
   .about-sidebar {
-    position: sticky;
-    top: 2rem;
-    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
   .profile-image {
     width: 100%;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .profile-image {
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    }
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   .contact-card {
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
     padding: 1.5rem;
-    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    border-left: 4px solid #0066cc;
   }
 
   @media (prefers-color-scheme: dark) {
     .contact-card {
-      background: #1e293b;
-      border-color: #334155;
+      background-color: #1e293b;
+      border-left-color: #60a5fa;
     }
   }
 
   .contact-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
   }
 
   .contact-card p {
     font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 1.5rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .contact-card p {
-      color: #cbd5e1;
-    }
+    margin-bottom: 1rem;
   }
 
   .btn {
-    display: block;
-    padding: 0.75rem;
-    margin-bottom: 0.5rem;
-    border-radius: 6px;
-    font-weight: 600;
-    text-decoration: none;
-    text-align: center;
-    transition: all 0.3s;
-    background: #0066cc;
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    background-color: #0066cc;
     color: white;
+    text-decoration: none;
+    border-radius: 0.3rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.2s;
   }
 
   .btn:hover {
-    background: #0052a3;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .btn {
-      background: #3b82f6;
-    }
-
-    .btn:hover {
-      background: #2563eb;
-    }
+    background-color: #0052a3;
   }
 
   .btn-secondary {
-    background: transparent;
-    color: #0066cc;
-    border: 2px solid #0066cc;
+    background-color: #666;
   }
 
   .btn-secondary:hover {
-    background: #0066cc;
-    color: white;
+    background-color: #555;
   }
 
-  @media (prefers-color-scheme: dark) {
-    .btn-secondary {
-      color: #60a5fa;
-      border-color: #60a5fa;
+  @media (max-width: 768px) {
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
     }
 
-    .btn-secondary:hover {
-      background: #3b82f6;
-      color: white;
+    .about-sidebar {
+      order: -1;
     }
   }
 
-  .certifications-section {
-    padding: 3rem 0;
-    border-top: 1px solid #e5e7eb;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .certifications-section {
-      border-top-color: #334155;
-    }
-  }
-
-  .certifications-section h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .note {
-    color: #666;
-    margin-bottom: 1.5rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .note {
-      color: #94a3b8;
-    }
-  }
-
-  .awards-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-  }
-
-  .award-item {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.75rem 1rem;
-    background: #f9fafb;
-    border-radius: 6px;
-    flex-wrap: wrap;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .award-item {
-      background: #1e293b;
-    }
-  }
-
-  .award-title {
-    font-weight: 600;
-  }
-
-  .award-period {
-    color: #666;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .award-period {
-      color: #94a3b8;
-    }
-  }
-
-  .cert-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .cert-card {
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 1.5rem;
-    text-align: center;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .cert-card {
-      background: #1e293b;
-      border-color: #334155;
-    }
-  }
-
-  .cert-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .cert-card h3 {
-    font-size: 0.95rem;
-    margin-bottom: 0.5rem;
-    line-height: 1.4;
-  }
-
-  .cert-issuer {
-    font-size: 0.85rem;
-    color: #666;
-    margin-bottom: 1rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .cert-issuer {
-      color: #94a3b8;
-    }
-  }
-
-  .verify-link {
-    display: inline-block;
-    color: #0066cc;
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 500;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .verify-link {
-      color: #60a5fa;
-    }
-  }
-
-  .verify-link:hover {
-    text-decoration: underline;
-  }
-
-  /* Startup Experience Styles */
   .startup-section {
-    padding: 3rem 0;
-    border-top: 1px solid #e5e7eb;
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid #eee;
   }
 
   @media (prefers-color-scheme: dark) {
     .startup-section {
-      border-top-color: #334155;
-    }
-  }
-
-  .startup-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .intro-text {
-    color: #666;
-    font-size: 1.05rem;
-    line-height: 1.8;
-    margin-bottom: 2rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .intro-text {
-      color: #cbd5e1;
+      border-top-color: #333;
     }
   }
 
   .startup-card {
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 2rem;
     margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
   }
 
   @media (prefers-color-scheme: dark) {
     .startup-card {
-      background: #1e293b;
-      border-color: #334155;
+      background-color: #1e293b;
     }
   }
 
   .startup-header {
-    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
   }
 
-  .startup-card h3 {
-    font-size: 1.5rem;
-    margin: 0 0 0.5rem 0;
+  .startup-header h3 {
+    margin: 0;
   }
 
   .startup-meta {
     display: flex;
     gap: 1rem;
-    font-size: 0.95rem;
-  }
-
-  .startup-meta .position {
-    font-weight: 600;
-    color: #0066cc;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .startup-meta .position {
-      color: #60a5fa;
-    }
-  }
-
-  .startup-meta .period {
+    font-size: 0.85rem;
     color: #666;
   }
 
   @media (prefers-color-scheme: dark) {
-    .startup-meta .period {
-      color: #94a3b8;
+    .startup-meta {
+      color: #999;
     }
   }
 
   .startup-description {
-    color: #666;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .startup-description {
-      color: #cbd5e1;
-    }
-  }
-
-  .startup-card .projects,
-  .startup-card .achievements {
-    margin-top: 1.5rem;
-  }
-
-  .startup-card h4 {
-    font-size: 1.1rem;
+    line-height: 1.6;
     margin-bottom: 1rem;
   }
 
-  .startup-card .projects ul,
-  .startup-card .achievements ul {
+  .projects,
+  .achievements {
+    margin-top: 1rem;
+  }
+
+  .projects h4,
+  .achievements h4 {
+    margin: 0.5rem 0 0.75rem 0;
+    font-size: 0.95rem;
+    color: #0066cc;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .projects h4,
+    .achievements h4 {
+      color: #60a5fa;
+    }
+  }
+
+  .projects ul,
+  .achievements ul {
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
-  .startup-card .projects li {
-    padding: 1rem;
-    margin-bottom: 0.75rem;
-    background: white;
-    border-left: 4px solid #0066cc;
-    border-radius: 4px;
+  .projects li,
+  .achievements li {
+    padding: 0.5rem 0;
+    line-height: 1.5;
+  }
+
+  .projects li strong {
+    color: #333;
   }
 
   @media (prefers-color-scheme: dark) {
-    .startup-card .projects li {
-      background: #0f172a;
-      border-left-color: #3b82f6;
+    .projects li strong {
+      color: #f0f0f0;
     }
   }
 
-  .startup-card .projects li strong {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #1f2937;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .startup-card .projects li strong {
-      color: #e2e8f0;
-    }
-  }
-
-  .startup-card .projects li p {
-    margin: 0.5rem 0;
-    font-size: 0.95rem;
+  .impact,
+  .patent {
+    font-size: 0.9rem;
     color: #666;
+    margin-top: 0.25rem;
   }
 
   @media (prefers-color-scheme: dark) {
-    .startup-card .projects li p {
-      color: #cbd5e1;
+    .impact,
+    .patent {
+      color: #aaa;
     }
   }
 
-  .startup-card .projects li .impact,
-  .startup-card .projects li .patent {
-    font-weight: 500;
-    margin-top: 0.5rem;
-  }
-
-  .startup-card .achievements li {
-    padding: 0.75rem 0 0.75rem 1.5rem;
-    margin-bottom: 0.5rem;
-    color: #666;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .startup-card .achievements li {
-      color: #cbd5e1;
-    }
-  }
-
-  .startup-card .achievements li:before {
-    content: "✓ ";
-    color: #0066cc;
-    font-weight: bold;
-    margin-left: -1.5rem;
-    margin-right: 0.5rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .startup-card .achievements li:before {
-      color: #60a5fa;
-    }
-  }
-
-  /* Products Grid */
   .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
   }
 
   .product-card {
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
     padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    border-left: 4px solid #0066cc;
   }
 
   @media (prefers-color-scheme: dark) {
     .product-card {
-      background: #1e293b;
-      border-color: #334155;
+      background-color: #1e293b;
+      border-left-color: #60a5fa;
     }
   }
 
   .product-card h3 {
-    font-size: 1.2rem;
     margin: 0 0 0.5rem 0;
   }
 
-  .product-card .subtitle {
-    color: #666;
+  .subtitle {
     font-size: 0.9rem;
-    font-style: italic;
-    margin-bottom: 1rem;
+    color: #666;
+    margin-bottom: 0.5rem;
   }
 
   @media (prefers-color-scheme: dark) {
-    .product-card .subtitle {
-      color: #94a3b8;
+    .subtitle {
+      color: #aaa;
     }
   }
 
-  .product-card .meta {
+  .meta {
     display: flex;
     gap: 1rem;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    color: #999;
     margin-bottom: 1rem;
   }
 
-  .product-card .period,
-  .product-card .company {
-    padding: 0.25rem 0.75rem;
-    background: white;
-    border-radius: 4px;
-    color: #666;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .product-card .period,
-    .product-card .company {
-      background: #0f172a;
-      color: #cbd5e1;
-    }
-  }
-
-  .product-card .description {
-    color: #666;
+  .description {
     line-height: 1.6;
-    margin-bottom: 1rem;
     font-size: 0.95rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .product-card .description {
-      color: #cbd5e1;
-    }
+    margin: 1rem 0;
   }
 
   .technologies {
@@ -778,17 +491,88 @@ import { siteConfig, bio, stats, certifications, awards, publications, startupEx
 
   .tech-tag {
     display: inline-block;
-    padding: 0.25rem 0.75rem;
-    background: #0066cc;
-    color: white;
-    border-radius: 4px;
+    padding: 0.3rem 0.7rem;
+    background-color: #e8f4f8;
+    color: #0066cc;
+    border-radius: 0.2rem;
     font-size: 0.8rem;
-    font-weight: 500;
   }
 
   @media (prefers-color-scheme: dark) {
     .tech-tag {
-      background: #3b82f6;
+      background-color: #1a3a42;
+      color: #60a5fa;
+    }
+  }
+
+  .certifications-section {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid #eee;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .certifications-section {
+      border-top-color: #333;
+    }
+  }
+
+  .note {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .note {
+      color: #aaa;
+    }
+  }
+
+  .awards-list {
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .award-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .award-item {
+      border-bottom-color: #333;
+    }
+  }
+
+  .award-title {
+    font-weight: 500;
+  }
+
+  .award-period {
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .award-period {
+      color: #999;
+    }
+  }
+
+  .intro-text {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 1rem 0 2rem 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .intro-text {
+      color: #aaa;
     }
   }
 </style>
